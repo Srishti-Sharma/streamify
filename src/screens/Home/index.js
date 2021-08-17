@@ -1,5 +1,6 @@
 import React from 'react';
 import {View, Text} from 'react-native';
+import CustomText from '../../components/CustomText';
 
 const HomeScreen = () => {
   return (
@@ -10,7 +11,8 @@ const HomeScreen = () => {
         alignItems: 'center',
         backgroundColor: '#10222D',
       }}>
-      <Text style={{color: 'white'}}>Home!</Text>
+      <Text style={{color: 'white', fontSize: 16}}>Home SWEET Home!</Text>
+      <CustomText>Home SWEET Home!</CustomText>
     </View>
   );
 };
