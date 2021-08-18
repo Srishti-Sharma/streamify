@@ -4,7 +4,7 @@ import {colorObj} from '../../../assets/colors';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 130,
+    paddingBottom: 80,
     backgroundColor: colorObj.primary,
     justifyContent: 'center',
     alignItems: 'center',

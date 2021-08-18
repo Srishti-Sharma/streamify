@@ -14,6 +14,9 @@ const initialState = {
   romanceMovies: [],
   romanceMoviesRequesting: false,
   romanceMoviesError: {},
+  horrorMovies: [],
+  horrorMoviesRequesting: false,
+  horrorMoviesError: {},
 };
 
 // reducer
@@ -47,6 +50,20 @@ const reducer = handleActions(
       ...state,
       romanceMoviesRequesting: false,
       romanceMoviesError: payload,
+    }),
+    [actionTypes.FETCH_HORROR_MOVIES_REQUEST]: (state, {payload}) => ({
+      ...state,
+      horrorMoviesRequesting: true,
+    }),
+    [actionTypes.FETCH_HORROR_MOVIES_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      horrorMoviesRequesting: false,
+      horrorMovies: [...payload],
+    }),
+    [actionTypes.FETCH_HORROR_MOVIES_FAILURE]: (state, {payload}) => ({
+      ...state,
+      horrorMoviesRequesting: false,
+      horrorMoviesError: payload,
     }),
   },
   initialState,

@@ -22,14 +22,28 @@ const HomeScreen = ({
   fetchRomanceMoviesRequest,
   romanceMovies,
   romanceMoviesRequesting,
+  horrorMovies,
+  horrorMoviesRequesting,
+  fetchHorrorMoviesRequest,
 }) => {
   useEffect(() => {
     fetchActionMoviesRequest(requests.fetchActionMovies);
     fetchRomanceMoviesRequest(requests.fetchRomanceMovies);
+    fetchHorrorMoviesRequest(requests.fetchHorrorMovies);
   }, []);
   return (
     <View style={styles.container}>
       <ScrollView>
+        <View
+          style={{
+            width: '100%',
+            height: 250,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <CustomText>Movie Carousel Coming Soon...</CustomText>
+        </View>
         <HorizontalRow
           title="Action Movies"
           contentList={actionMovies}
@@ -39,6 +53,11 @@ const HomeScreen = ({
           title="Romance Movies"
           contentList={romanceMovies}
           loading={romanceMoviesRequesting}
+        />
+        <HorizontalRow
+          title="Horror Movies"
+          contentList={horrorMovies}
+          loading={horrorMoviesRequesting}
         />
       </ScrollView>
     </View>
