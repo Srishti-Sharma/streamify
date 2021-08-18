@@ -4,9 +4,9 @@ import CustomText from '../CustomText';
 import styles from './styles';
 import {baseImgUrl} from '../../../api/constants';
 import {colorObj} from '../../../assets/colors';
+import FastImage from 'react-native-fast-image';
 
 const HorizontalRow = ({title = '', contentList = [], loading}) => {
-  // const [imageLoading, setImageLoading] = useState(false);
   return (
     <View style={styles.rowContainer}>
       <CustomText bold>{title}</CustomText>
@@ -24,12 +24,16 @@ const HorizontalRow = ({title = '', contentList = [], loading}) => {
               keyExtractor={(item, index) => index}
               renderItem={item => (
                 <View style={styles.imageWrapper} key={item.index}>
-                  <Image
-                    style={styles.image}
-                    source={{uri: `${baseImgUrl}${item.item.backdrop_path}`}}
-                    // onLoadStart={() => setImageLoading(true)}
-                    // onLoadEnd={() => setImageLoading(false)}
-                  />
+                  {item.item.backdrop_path !== null && (
+                    <FastImage
+                      style={styles.image}
+                      source={{
+                        uri: `${baseImgUrl}${item.item.backdrop_path}`,
+                        priority: FastImage.priority.high,
+                      }}
+                      resizeMode={FastImage.resizeMode.cover}
+                    />
+                  )}
                 </View>
               )}
             />
