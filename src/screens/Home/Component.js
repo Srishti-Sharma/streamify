@@ -14,6 +14,7 @@ import CustomText from '../../components/CustomText';
 import styles from './styles';
 import requests from '../../../api/requests';
 import HorizontalRow from '../../components/HorizontalRow';
+import CarouselCards from '../../components/CarouselCards';
 
 const HomeScreen = ({
   fetchActionMoviesRequest,
@@ -38,12 +39,12 @@ const HomeScreen = ({
           <View
             style={{
               width: '100%',
-              height: 250,
+              height: 300,
               flex: 1,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <CustomText>Movie Carousel Coming Soon...</CustomText>
+            <CarouselCards data={actionMovies} />
           </View>
           <HorizontalRow
             title="Action Movies"
