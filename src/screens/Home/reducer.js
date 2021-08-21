@@ -33,7 +33,7 @@ const reducer = handleActions(
     [actionTypes.FETCH_ACTION_MOVIES_SUCCESS]: (state, {payload}) => ({
       ...state,
       actionMoviesRequesting: false,
-      actionMovies: [...payload],
+      actionMovies: [...payload.sort(() => Math.random() - 0.5)],
     }),
     [actionTypes.FETCH_ACTION_MOVIES_FAILURE]: (state, {payload}) => ({
       ...state,
@@ -47,7 +47,7 @@ const reducer = handleActions(
     [actionTypes.FETCH_ROMANCE_MOVIES_SUCCESS]: (state, {payload}) => ({
       ...state,
       romanceMoviesRequesting: false,
-      romanceMovies: [...payload],
+      romanceMovies: [...payload.sort(() => Math.random() - 0.5)],
     }),
     [actionTypes.FETCH_ROMANCE_MOVIES_FAILURE]: (state, {payload}) => ({
       ...state,
@@ -61,7 +61,7 @@ const reducer = handleActions(
     [actionTypes.FETCH_HORROR_MOVIES_SUCCESS]: (state, {payload}) => ({
       ...state,
       horrorMoviesRequesting: false,
-      horrorMovies: [...payload],
+      horrorMovies: [...payload.sort(() => Math.random() - 0.5)],
     }),
     [actionTypes.FETCH_HORROR_MOVIES_FAILURE]: (state, {payload}) => ({
       ...state,
@@ -75,7 +75,7 @@ const reducer = handleActions(
     [actionTypes.FETCH_TRENDING_MOVIES_SUCCESS]: (state, {payload}) => ({
       ...state,
       trendingMoviesRequesting: false,
-      trendingMovies: [...payload],
+      trendingMovies: [...payload.sort(() => Math.random() - 0.5)],
     }),
     [actionTypes.FETCH_TRENDING_MOVIES_FAILURE]: (state, {payload}) => ({
       ...state,
