@@ -7,4 +7,5 @@ export const colorObj = {
   dark: 'rgb(26,22,28)',
   black: 'rgb(50,50,50)',
   darkOpacity: 'rgba(26,22,28,0.2)',
+  secondary: '#F9AA33',
 };
