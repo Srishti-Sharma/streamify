@@ -26,11 +26,14 @@ const HomeScreen = ({
   horrorMovies,
   horrorMoviesRequesting,
   fetchHorrorMoviesRequest,
+  fetchTrendingMoviesRequest,
+  trendingMovies,
 }) => {
   useEffect(() => {
     fetchActionMoviesRequest(requests.fetchActionMovies);
     fetchRomanceMoviesRequest(requests.fetchRomanceMovies);
     fetchHorrorMoviesRequest(requests.fetchHorrorMovies);
+    fetchTrendingMoviesRequest(requests.fetchTrending);
   }, []);
   return (
     <SafeAreaView style={styles.container}>
@@ -44,7 +47,7 @@ const HomeScreen = ({
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-            <CarouselCards data={actionMovies} />
+            <CarouselCards data={trendingMovies} />
           </View>
           <HorizontalRow
             title="Action Movies"

@@ -5,6 +5,7 @@ import {
   fetchActionMoviesRequest,
   fetchRomanceMoviesRequest,
   fetchHorrorMoviesRequest,
+  fetchTrendingMoviesRequest,
 } from './actions';
 import {
   selectActionMovies,
@@ -13,6 +14,8 @@ import {
   selectRomanceMoviesRequesting,
   selectHorrorMoviesRequesting,
   selectHorrorMovies,
+  selectTrendingMoviesRequesting,
+  selectTrendingMovies,
 } from './selectors';
 
 const mapStateToProps = createSelector(
@@ -22,6 +25,8 @@ const mapStateToProps = createSelector(
   selectRomanceMoviesRequesting,
   selectHorrorMovies,
   selectHorrorMoviesRequesting,
+  selectTrendingMovies,
+  selectTrendingMoviesRequesting,
   (
     actionMovies,
     actionMoviesRequesting,
@@ -29,6 +34,8 @@ const mapStateToProps = createSelector(
     romanceMoviesRequesting,
     horrorMovies,
     horrorMoviesRequesting,
+    trendingMovies,
+    trendingMoviesRequesting,
   ) => ({
     actionMovies,
     actionMoviesRequesting,
@@ -36,6 +43,8 @@ const mapStateToProps = createSelector(
     romanceMoviesRequesting,
     horrorMovies,
     horrorMoviesRequesting,
+    trendingMovies,
+    trendingMoviesRequesting,
   }),
 );
 
@@ -46,6 +55,8 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchRomanceMoviesRequest(payload)),
   fetchHorrorMoviesRequest: payload =>
     dispatch(fetchHorrorMoviesRequest(payload)),
+  fetchTrendingMoviesRequest: payload =>
+    dispatch(fetchTrendingMoviesRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);
