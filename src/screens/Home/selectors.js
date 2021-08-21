@@ -23,3 +23,11 @@ export const selectHorrorMovies = state => selectHome(state).horrorMovies;
 
 export const selectHorrorMoviesError = state =>
   selectHome(state).horrorMoviesError;
+
+export const selectTrendingMoviesRequesting = state =>
+  selectHome(state).trendingMoviesRequesting;
+
+export const selectTrendingMovies = state => selectHome(state).trendingMovies;
+
+export const selectTrendingMoviesError = state =>
+  selectHome(state).trendingMoviesError;

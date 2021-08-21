@@ -5,6 +5,7 @@ import {
   fetchActionMoviesRequest,
   fetchRomanceMoviesRequest,
   fetchHorrorMoviesRequest,
+  fetchTrendingMoviesRequest,
 } from './actions';
 //axios
 import axios from '../../../api/axios';
@@ -33,6 +34,16 @@ const getRomanceMovies = ({payload}) => {
     });
 };
 const getHorrorMovies = ({payload}) => {
+  return axios
+    .get(payload)
+    .then(function (response) {
+      return response;
+    })
+    .catch(function (error) {
+      return error;
+    });
+};
+const getTrendingMovies = ({payload}) => {
   return axios
     .get(payload)
     .then(function (response) {
@@ -109,11 +120,34 @@ function* fetchHorrorMovieData(action) {
     });
   }
 }
+function* fetchTrendingMovieData(action) {
+  const response = yield call(getTrendingMovies, {
+    payload: action.payload,
+  });
+  if (response && response.data && response.data.results) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_TRENDING_MOVIES_SUCCESS,
+      ),
+      payload: response.data.results,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_TRENDING_MOVIES_FAILURE,
+      ),
+      payload: {error: 'Something Went Wrong'},
+    });
+  }
+}
 
 function* testSaga() {
   yield takeLatest(fetchActionMoviesRequest, fetchActionMovieData);
   yield takeLatest(fetchRomanceMoviesRequest, fetchRomanceMovieData);
   yield takeLatest(fetchHorrorMoviesRequest, fetchHorrorMovieData);
+  yield takeLatest(fetchTrendingMoviesRequest, fetchTrendingMovieData);
 }
 
 export default testSaga;

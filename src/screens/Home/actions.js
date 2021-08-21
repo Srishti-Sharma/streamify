@@ -23,6 +23,9 @@ export const {
   fetchHorrorMoviesRequest,
   fetchHorrorMoviesSuccess,
   fetchHorrorMoviesFailure,
+  fetchTrendingMoviesRequest,
+  fetchTrendingMoviesSuccess,
+  fetchTrendingMoviesFailure,
 } = createActions(
   actionTypes.FETCH_ACTION_MOVIES_REQUEST,
   actionTypes.FETCH_ACTION_MOVIES_SUCCESS,
@@ -33,5 +36,9 @@ export const {
   actionTypes.FETCH_HORROR_MOVIES_REQUEST,
   actionTypes.FETCH_HORROR_MOVIES_SUCCESS,
   actionTypes.FETCH_HORROR_MOVIES_FAILURE,
+  actionTypes.FETCH_TRENDING_MOVIES_REQUEST,
+  actionTypes.FETCH_TRENDING_MOVIES_SUCCESS,
+  actionTypes.FETCH_TRENDING_MOVIES_FAILURE,
+
   getActionOptions(ACTION_PREFIX),
 );
