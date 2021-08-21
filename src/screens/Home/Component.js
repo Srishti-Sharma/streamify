@@ -37,35 +37,32 @@ const HomeScreen = ({
   }, []);
   return (
     <SafeAreaView style={styles.container}>
-      <View>
-        <ScrollView>
-          <View
-            style={{
-              width: '100%',
-              height: 300,
-              flex: 1,
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}>
-            <CarouselCards data={trendingMovies} />
-          </View>
-          <HorizontalRow
-            title="Action Movies"
-            contentList={actionMovies}
-            loading={actionMoviesRequesting}
-          />
-          <HorizontalRow
-            title="Romance Movies"
-            contentList={romanceMovies}
-            loading={romanceMoviesRequesting}
-          />
-          <HorizontalRow
-            title="Horror Movies"
-            contentList={horrorMovies}
-            loading={horrorMoviesRequesting}
-          />
-        </ScrollView>
-      </View>
+      <ScrollView directionalLockEnabled>
+        <View
+          style={{
+            height: 300,
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <CarouselCards data={trendingMovies} />
+        </View>
+        <HorizontalRow
+          title="Action Movies"
+          contentList={actionMovies}
+          loading={actionMoviesRequesting}
+        />
+        <HorizontalRow
+          title="Romance Movies"
+          contentList={romanceMovies}
+          loading={romanceMoviesRequesting}
+        />
+        <HorizontalRow
+          title="Horror Movies"
+          contentList={horrorMovies}
+          loading={horrorMoviesRequesting}
+        />
+      </ScrollView>
     </SafeAreaView>
   );
 };

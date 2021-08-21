@@ -8,7 +8,24 @@ export const tabScreenOptions = route => ({
   tabBarInactiveTintColor: colorObj.primaryText,
   tabBarInactiveBackgroundColor: colorObj.primary,
   tabBarActiveBackgroundColor: colorObj.primary,
-  tabBarStyle: {position: 'absolute', bottom: 0},
+  headerStyle: {
+    backgroundColor: colorObj.primary,
+    // removes header border
+    elevation: 0,
+    shadowOpacity: 0,
+    borderBottomWidth: 0,
+  },
+  headerTintColor: colorObj.primaryHeading,
+  tabBarStyle: {
+    height: 80,
+    backgroundColor: colorObj.primary,
+    position: 'absolute',
+    bottom: 0,
+    // removes tab border
+    elevation: 0,
+    shadowOpacity: 0,
+    borderTopWidth: 0,
+  },
   tabBarIcon: ({focused, color, size}) => {
     if (route.name === 'Home') {
       return focused ? (
@@ -20,7 +37,7 @@ export const tabScreenOptions = route => ({
       return focused ? (
         <Icon
           name="md-search-circle-sharp"
-          size={30}
+          size={20}
           color={colorObj.primaryText}
         />
       ) : (

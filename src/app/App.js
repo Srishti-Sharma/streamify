@@ -11,7 +11,7 @@ import configure from '../store';
 const {store} = configure();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const isDarkMode = useColorScheme() === 'light';
 
   return (
     <>

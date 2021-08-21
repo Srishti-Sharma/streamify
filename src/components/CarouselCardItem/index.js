@@ -1,19 +1,11 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  StyleSheet,
-  Dimensions,
-  Image,
-  ImageBackground,
-} from 'react-native';
+import {View, StyleSheet, Dimensions} from 'react-native';
 import {baseImgUrl} from '../../../api/constants';
-import CustomText from '../CustomText';
 import FastImage from 'react-native-fast-image';
 import {colorObj} from '../../../assets/colors';
 
-export const SLIDER_WIDTH = Dimensions.get('window').width + 80;
-export const ITEM_WIDTH = Math.round(SLIDER_WIDTH * 0.9);
+export const SLIDER_WIDTH = Dimensions.get('window').width;
+export const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
 
 const CarouselCardItem = ({item, index}) => {
   return (

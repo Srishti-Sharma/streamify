@@ -8,10 +8,7 @@ const styles = StyleSheet.create({
     backgroundColor: colorObj.primary,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  topSection: {
-    paddingTop: 15,
-    flex: 1,
+    paddingHorizontal: 5,
   },
   image: {
     width: 150,
