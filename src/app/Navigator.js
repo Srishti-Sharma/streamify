@@ -13,7 +13,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {Home} from '../screens/Home';
-import SettingsScreen from '../screens/Settings';
+import {Explore} from '../screens/Explore';
 import {Test} from '../screens/testScreen';
 import {tabScreenOptions} from './utils';
 
@@ -24,7 +24,7 @@ const Navigator = () => {
     <NavigationContainer>
       <Tab.Navigator screenOptions={({route}) => tabScreenOptions(route)}>
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Explore" component={SettingsScreen} />
+        <Tab.Screen name="Explore" component={Explore} />
         <Tab.Screen name="Profile" component={Test} />
       </Tab.Navigator>
     </NavigationContainer>
