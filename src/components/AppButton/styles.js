@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import {colorObj} from '../../../assets/colors';
 
 const styles = StyleSheet.create({
   container: {
@@ -8,7 +9,8 @@ const styles = StyleSheet.create({
   },
   button: {
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    backgroundColor: colorObj.secondary,
+    borderRadius: 7,
     padding: 10,
   },
   countContainer: {
