@@ -8,12 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* streamifyTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* streamifyTests.m */; };
+		090FEAA8AFFE48A7A7234E3E /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 56BDFC707BF64690AFD4558E /* OpenSans-SemiBold.ttf */; };
+		0F5E8FB57FC040008ADC254A /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5327F6A04F4B4CCEB7192D42 /* OpenSans-Italic.ttf */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		1E59A86C2AD340C38B99D10D /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 33B3B6AEFD9A4C6889D5B543 /* OpenSans-ExtraBold.ttf */; };
+		224FB1A2297C41B4ADB44EBC /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43FD64F0DDFF41309A49651E /* OpenSans-ExtraBoldItalic.ttf */; };
+		26DF4F68171F4CA585077B56 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6127860B533E4110BCDE52D1 /* OpenSans-SemiBoldItalic.ttf */; };
+		4DC07EB326D0F9AC00624AE0 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = 4DC07EB226D0F9AC00624AE0 /* Fonts */; };
 		7079B38F6AEFCC82F0858306 /* libPods-streamify.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 815454575FAF770133F24817 /* libPods-streamify.a */; };
+		7B2F8C3B186346EF80A49FE9 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 65308E7E0115413B8DE0A1B9 /* OpenSans-Bold.ttf */; };
+		7E1507F42C4B4634B0EE8142 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF896E9B3F8D484EB40A0B6E /* OpenSans-BoldItalic.ttf */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		98A536898227688EA5298B0C /* libPods-streamify-streamifyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A7555A0DEAF74C846B11930D /* libPods-streamify-streamifyTests.a */; };
+		9F85333D24DB4879966A2A65 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 949845B086154954AD59D626 /* OpenSans-Light.ttf */; };
+		AD91C8EFA80E48058F696822 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A04B54555426423EBBD0B7D9 /* OpenSans-LightItalic.ttf */; };
+		E0E1AA67C6D846108A1ECFD3 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A9A19B5199D344D59F05DC28 /* OpenSans-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,11 +48,22 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = streamify/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = streamify/main.m; sourceTree = "<group>"; };
 		26B49E3E6802B6A3637720A2 /* Pods-streamify-streamifyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streamify-streamifyTests.debug.xcconfig"; path = "Target Support Files/Pods-streamify-streamifyTests/Pods-streamify-streamifyTests.debug.xcconfig"; sourceTree = "<group>"; };
+		33B3B6AEFD9A4C6889D5B543 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBold.ttf"; path = "../assets/fonts/OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		43FD64F0DDFF41309A49651E /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-ExtraBoldItalic.ttf"; path = "../assets/fonts/OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4DC07EB226D0F9AC00624AE0 /* Fonts */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Fonts; path = "../node_modules/react-native-vector-icons/Fonts"; sourceTree = "<group>"; };
+		5327F6A04F4B4CCEB7192D42 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Italic.ttf"; path = "../assets/fonts/OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		56BDFC707BF64690AFD4558E /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBold.ttf"; path = "../assets/fonts/OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
 		5EE2B416BA7A031F9B7F5A21 /* Pods-streamify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streamify.debug.xcconfig"; path = "Target Support Files/Pods-streamify/Pods-streamify.debug.xcconfig"; sourceTree = "<group>"; };
+		6127860B533E4110BCDE52D1 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-SemiBoldItalic.ttf"; path = "../assets/fonts/OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		65308E7E0115413B8DE0A1B9 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		815454575FAF770133F24817 /* libPods-streamify.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-streamify.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = streamify/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		949845B086154954AD59D626 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Light.ttf"; path = "../assets/fonts/OpenSans-Light.ttf"; sourceTree = "<group>"; };
 		9E2D601A2E2F0F26A040BACD /* Pods-streamify-streamifyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streamify-streamifyTests.release.xcconfig"; path = "Target Support Files/Pods-streamify-streamifyTests/Pods-streamify-streamifyTests.release.xcconfig"; sourceTree = "<group>"; };
+		A04B54555426423EBBD0B7D9 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-LightItalic.ttf"; path = "../assets/fonts/OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
 		A7555A0DEAF74C846B11930D /* libPods-streamify-streamifyTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-streamify-streamifyTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A9A19B5199D344D59F05DC28 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Regular.ttf"; path = "../assets/fonts/OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		AF896E9B3F8D484EB40A0B6E /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-BoldItalic.ttf"; path = "../assets/fonts/OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		E901738353630500181EB7B1 /* Pods-streamify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-streamify.release.xcconfig"; path = "Target Support Files/Pods-streamify/Pods-streamify.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -86,6 +108,7 @@
 		13B07FAE1A68108700A75B9A /* streamify */ = {
 			isa = PBXGroup;
 			children = (
+				4DC07EB226D0F9AC00624AE0 /* Fonts */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -122,6 +145,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				FA7C322AA10DFF13AD7826F7 /* Pods */,
+				EA338990DC484479B3B1EF7C /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -137,6 +161,23 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		EA338990DC484479B3B1EF7C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				65308E7E0115413B8DE0A1B9 /* OpenSans-Bold.ttf */,
+				AF896E9B3F8D484EB40A0B6E /* OpenSans-BoldItalic.ttf */,
+				33B3B6AEFD9A4C6889D5B543 /* OpenSans-ExtraBold.ttf */,
+				43FD64F0DDFF41309A49651E /* OpenSans-ExtraBoldItalic.ttf */,
+				5327F6A04F4B4CCEB7192D42 /* OpenSans-Italic.ttf */,
+				949845B086154954AD59D626 /* OpenSans-Light.ttf */,
+				A04B54555426423EBBD0B7D9 /* OpenSans-LightItalic.ttf */,
+				A9A19B5199D344D59F05DC28 /* OpenSans-Regular.ttf */,
+				56BDFC707BF64690AFD4558E /* OpenSans-SemiBold.ttf */,
+				6127860B533E4110BCDE52D1 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		FA7C322AA10DFF13AD7826F7 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,7 +186,6 @@
 				26B49E3E6802B6A3637720A2 /* Pods-streamify-streamifyTests.debug.xcconfig */,
 				9E2D601A2E2F0F26A040BACD /* Pods-streamify-streamifyTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -245,6 +285,17 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				7B2F8C3B186346EF80A49FE9 /* OpenSans-Bold.ttf in Resources */,
+				7E1507F42C4B4634B0EE8142 /* OpenSans-BoldItalic.ttf in Resources */,
+				1E59A86C2AD340C38B99D10D /* OpenSans-ExtraBold.ttf in Resources */,
+				4DC07EB326D0F9AC00624AE0 /* Fonts in Resources */,
+				224FB1A2297C41B4ADB44EBC /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				0F5E8FB57FC040008ADC254A /* OpenSans-Italic.ttf in Resources */,
+				9F85333D24DB4879966A2A65 /* OpenSans-Light.ttf in Resources */,
+				AD91C8EFA80E48058F696822 /* OpenSans-LightItalic.ttf in Resources */,
+				E0E1AA67C6D846108A1ECFD3 /* OpenSans-Regular.ttf in Resources */,
+				090FEAA8AFFE48A7A7234E3E /* OpenSans-SemiBold.ttf in Resources */,
+				26DF4F68171F4CA585077B56 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

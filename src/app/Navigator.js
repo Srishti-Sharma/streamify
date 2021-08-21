@@ -12,17 +12,20 @@ import {StyleSheet} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import HomeScreen from '../screens/Home';
+import {Home} from '../screens/Home';
 import SettingsScreen from '../screens/Settings';
+import {Test} from '../screens/testScreen';
+import {tabScreenOptions} from './utils';
 
 const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
   return (
     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Home" component={HomeScreen} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
+      <Tab.Navigator screenOptions={({route}) => tabScreenOptions(route)}>
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Explore" component={SettingsScreen} />
+        <Tab.Screen name="Profile" component={Test} />
       </Tab.Navigator>
     </NavigationContainer>
   );
