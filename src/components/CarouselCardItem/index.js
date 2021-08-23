@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     backgroundColor: colorObj.primary,
     borderRadius: 8,
     width: ITEM_WIDTH,
-    paddingBottom: 40,
+    paddingBottom: 10,
     shadowColor: '#000',
     shadowOffset: {
       width: 0,
