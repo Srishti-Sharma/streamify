@@ -3,6 +3,8 @@ import {View, StyleSheet, Dimensions} from 'react-native';
 import {baseImgUrl} from '../../../api/constants';
 import FastImage from 'react-native-fast-image';
 import {colorObj} from '../../../assets/colors';
+import LinearGradient from 'react-native-linear-gradient';
+import CustomText from '../CustomText';
 
 export const SLIDER_WIDTH = Dimensions.get('window').width;
 export const ITEM_WIDTH = Math.round(SLIDER_WIDTH);
@@ -16,8 +18,16 @@ const CarouselCardItem = ({item, index}) => {
           uri: `${baseImgUrl}${item.backdrop_path}`,
           priority: FastImage.priority.high,
         }}
-        resizeMode={FastImage.resizeMode.cover}
-      />
+        resizeMode={FastImage.resizeMode.cover}>
+        <LinearGradient
+          locations={[0, 1.0]}
+          colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,0.99)']}
+          style={styles.linearGradient}>
+          <View style={styles.imageText}>
+            <CustomText bold>{item.title}</CustomText>
+          </View>
+        </LinearGradient>
+      </FastImage>
     </View>
   );
 };
@@ -53,6 +63,17 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
     paddingLeft: 20,
     paddingRight: 20,
+  },
+  imageText: {
+    position: 'absolute',
+    bottom: 0,
+    paddingBottom: 5,
+    paddingLeft: 5,
+  },
+  linearGradient: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
   },
 });
 
