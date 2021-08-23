@@ -1,6 +1,7 @@
 import React from 'react';
 import {colorObj} from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {Text, TouchableOpacity} from 'react-native';
 
 export const tabScreenOptions = route => ({
   tabBarActiveTintColor: colorObj.secondary,
@@ -50,4 +51,18 @@ export const tabScreenOptions = route => ({
       );
     }
   },
+});
+export const StackScreenOptions = route => ({
+  headerStyle: {
+    backgroundColor: colorObj.primary,
+  },
+  headerTintColor: colorObj.secondary,
+});
+export const MovieListScreenOptions = ({props, navigation}) => ({
+  headerLeft: props => (
+    <TouchableOpacity onPress={() => navigation.goBack()}>
+      <Icon name="arrow-back-outline" size={25} color={colorObj.secondary} />
+    </TouchableOpacity>
+  ),
+  headerTitle: '',
 });

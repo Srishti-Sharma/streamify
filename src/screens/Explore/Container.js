@@ -5,7 +5,7 @@ import //
 './actions';
 import //
 './selectors';
-
+import {setGenre} from '../MovieList/actions';
 const mapStateToProps = createSelector(
   //
   () =>
@@ -16,8 +16,7 @@ const mapStateToProps = createSelector(
 );
 
 const mapDispatchToProps = dispatch => ({
-  //   fetchActionMoviesRequest: payload =>
-  //     dispatch(fetchActionMoviesRequest(payload)),
+  setGenre: payload => dispatch(setGenre(payload)),
 });
 
-export default connect(null, null)(Component);
+export default connect(null, mapDispatchToProps)(Component);

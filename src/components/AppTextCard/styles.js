@@ -4,13 +4,13 @@ import {colorObj} from '../../../assets/colors';
 const styles = StyleSheet.create({
   text: {
     fontWeight: 'bold',
-    color: colorObj.primary,
+    color: colorObj.secondary,
     fontSize: 18,
   },
-  linearGradient: {
+  container: {
     borderRadius: 5,
-    width: 170,
-    height: 70,
+    width: 160,
+    height: 60,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 10,

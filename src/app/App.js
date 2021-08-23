@@ -1,6 +1,7 @@
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
-import Navigator from './Navigator';
+// import Navigator from './Navigator';
+import AppNavigator from './AppNavigator';
 // Redux
 import {Provider} from 'react-redux';
 
@@ -17,7 +18,7 @@ const App = () => {
     <>
       <Provider store={store}>
         <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Navigator />
+        <AppNavigator />
       </Provider>
     </>
   );

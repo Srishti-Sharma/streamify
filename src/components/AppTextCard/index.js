@@ -5,12 +5,8 @@ import LinearGradient from 'react-native-linear-gradient';
 import {colorObj} from '../../../assets/colors';
 const AppTextCard = ({title, ...rest}) => {
   return (
-    <TouchableOpacity {...rest}>
-      <LinearGradient
-        colors={[colorObj.secondary, colorObj.secondaryFade]}
-        style={styles.linearGradient}>
-        <Text style={styles.text}>{title}</Text>
-      </LinearGradient>
+    <TouchableOpacity {...rest} style={styles.container}>
+      <Text style={styles.text}>{title}</Text>
     </TouchableOpacity>
   );
 };

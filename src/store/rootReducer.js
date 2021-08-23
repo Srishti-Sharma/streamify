@@ -10,10 +10,13 @@ import {combineReducers} from 'redux';
  */
 import {reducer as testReducer} from '../screens/testScreen';
 import {reducer as homeReducer} from '../screens/Home';
+import {reducer as movieListReducer} from '../screens/MovieList';
+
 const appReducer = combineReducers({
   //All Screen Reducers would come here
   testReducer,
   homeReducer,
+  movieListReducer,
 });
 
 /**

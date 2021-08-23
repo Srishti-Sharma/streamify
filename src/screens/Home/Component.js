@@ -28,6 +28,7 @@ const HomeScreen = ({
   fetchHorrorMoviesRequest,
   fetchTrendingMoviesRequest,
   trendingMovies,
+  navigation,
 }) => {
   useEffect(() => {
     fetchActionMoviesRequest(requests.fetchActionMovies);
@@ -51,16 +52,19 @@ const HomeScreen = ({
           title="Action Movies"
           contentList={actionMovies}
           loading={actionMoviesRequesting}
+          navigation={navigation}
         />
         <HorizontalRow
           title="Romance Movies"
           contentList={romanceMovies}
           loading={romanceMoviesRequesting}
+          navigation={navigation}
         />
         <HorizontalRow
           title="Horror Movies"
           contentList={horrorMovies}
           loading={horrorMoviesRequesting}
+          navigation={navigation}
         />
       </ScrollView>
     </SafeAreaView>

@@ -9,4 +9,6 @@ export const colorObj = {
   darkOpacity: 'rgba(26,22,28,0.2)',
   secondary: '#F9AA33',
   secondaryFade: '#F9AA3330',
+  primaryDark: '#10222D30',
+  primaryLight: '#10222D80',
 };

@@ -21,13 +21,11 @@ const Tab = createBottomTabNavigator();
 
 const Navigator = () => {
   return (
-    <NavigationContainer>
-      <Tab.Navigator screenOptions={({route}) => tabScreenOptions(route)}>
-        <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Explore" component={Explore} />
-        <Tab.Screen name="Profile" component={Test} />
-      </Tab.Navigator>
-    </NavigationContainer>
+    <Tab.Navigator screenOptions={({route}) => tabScreenOptions(route)}>
+      <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Explore" component={Explore} />
+      <Tab.Screen name="Profile" component={Test} />
+    </Tab.Navigator>
   );
 };
 
