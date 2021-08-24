@@ -27,7 +27,7 @@ const MovieList = ({
   useEffect(() => {
     switch (movieListGenre) {
       case genre.ACTION:
-        fetchActionMoviesRequest(requests.fetchActionMovies);
+        fetchActionMoviesRequest();
         break;
 
       default:

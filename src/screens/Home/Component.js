@@ -10,9 +10,7 @@ import {
   SafeAreaView,
   StatusBar,
 } from 'react-native';
-import CustomText from '../../components/CustomText';
 import styles from './styles';
-import requests from '../../../api/requests';
 import HorizontalRow from '../../components/HorizontalRow';
 import CarouselCards from '../../components/CarouselCards';
 
@@ -27,14 +25,16 @@ const HomeScreen = ({
   horrorMoviesRequesting,
   fetchHorrorMoviesRequest,
   fetchTrendingMoviesRequest,
+  fetchGenreListRequest,
   trendingMovies,
   navigation,
 }) => {
   useEffect(() => {
-    fetchActionMoviesRequest(requests.fetchActionMovies);
-    fetchRomanceMoviesRequest(requests.fetchRomanceMovies);
-    fetchHorrorMoviesRequest(requests.fetchHorrorMovies);
-    fetchTrendingMoviesRequest(requests.fetchTrending);
+    fetchActionMoviesRequest();
+    fetchRomanceMoviesRequest();
+    fetchHorrorMoviesRequest();
+    fetchTrendingMoviesRequest();
+    fetchGenreListRequest();
   }, []);
   return (
     <SafeAreaView style={styles.container}>

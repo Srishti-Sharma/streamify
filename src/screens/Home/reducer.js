@@ -20,6 +20,9 @@ const initialState = {
   trendingMovies: [],
   trendingMoviesRequesting: false,
   trendingMoviesError: {},
+  genreList: [],
+  genreListRequesting: false,
+  genreListError: {},
 };
 
 // reducer
@@ -81,6 +84,20 @@ const reducer = handleActions(
       ...state,
       trendingMoviesRequesting: false,
       trendingMoviesError: payload,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_REQUEST]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: true,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: false,
+      genreList: payload,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_FAILURE]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: false,
+      genreListError: payload,
     }),
   },
   initialState,
