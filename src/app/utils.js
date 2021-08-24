@@ -2,6 +2,7 @@ import React from 'react';
 import {colorObj} from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Text, TouchableOpacity} from 'react-native';
+import {BackButton} from '../components';
 
 export const tabScreenOptions = route => ({
   tabBarActiveTintColor: colorObj.secondary,
@@ -58,11 +59,7 @@ export const StackScreenOptions = route => ({
   },
   headerTintColor: colorObj.secondary,
 });
-export const MovieListScreenOptions = ({props, navigation}) => ({
-  headerLeft: props => (
-    <TouchableOpacity onPress={() => navigation.goBack()}>
-      <Icon name="arrow-back-outline" size={25} color={colorObj.secondary} />
-    </TouchableOpacity>
-  ),
+export const screenOptions = ({props, navigation}) => ({
+  headerLeft: props => <BackButton onPress={() => navigation.goBack()} />,
   headerTitle: '',
 });

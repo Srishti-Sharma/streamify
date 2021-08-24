@@ -7,7 +7,8 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import Navigator from './Navigator';
 import {MovieList} from '../screens/MovieList';
-import {StackScreenOptions, MovieListScreenOptions} from './utils';
+import {StackScreenOptions, screenOptions} from './utils';
+import Details from '../screens/Details';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -24,7 +25,12 @@ const AppNavigator = () => {
         <Stack.Screen
           name="MovieList"
           component={MovieList}
-          options={props => MovieListScreenOptions(props)}
+          options={props => screenOptions(props)}
+        />
+        <Stack.Screen
+          name="Details"
+          component={Details}
+          options={{headerShown: false}}
         />
       </Stack.Navigator>
     </NavigationContainer>
