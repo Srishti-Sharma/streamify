@@ -22,6 +22,12 @@ const MovieList = ({
   fetchActionMoviesRequest,
   actionMoviesRequesting,
   actionMovies,
+  fetchRomanceMoviesRequest,
+  romanceMoviesRequesting,
+  romanceMovies,
+  horrorMoviesRequesting,
+  horrorMovies,
+  fetchHorrorMoviesRequest,
 }) => {
   const [movieList, setMovieList] = useState([]);
   useEffect(() => {
@@ -29,10 +35,16 @@ const MovieList = ({
       case genre.ACTION:
         fetchActionMoviesRequest();
         break;
-
+      case genre.ROMANCE:
+        fetchRomanceMoviesRequest(requests.fetchRomanceMovies);
+        break;
+      case genre.HORROR:
+        fetchHorrorMoviesRequest(requests.fetchHorrorMovies);
+        break;
       default:
         break;
     }
+    return () => setMovieList([]);
   }, []);
   useEffect(() => {
     switch (movieListGenre) {
@@ -42,15 +54,31 @@ const MovieList = ({
           setMovieList([...arr]);
         }
         break;
+      case genre.ROMANCE:
+        if (romanceMovies) {
+          let arr = [...romanceMovies];
+          setMovieList([...arr]);
+        }
+        break;
+      case genre.HORROR:
+        if (horrorMovies) {
+          let arr = [...horrorMovies];
+          setMovieList([...arr]);
+        }
+        break;
 
       default:
         break;
     }
   }, [movieListGenre]);
+
+  const loading =
+    actionMoviesRequesting || romanceMoviesRequesting || horrorMoviesRequesting;
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView directionalLockEnabled>
-        {actionMoviesRequesting ? (
+        {loading ? (
           <View style={styles.loader}>
             <ActivityIndicator size="small" color={colorObj.primaryText} />
           </View>
