@@ -14,6 +14,7 @@ const RoundButton = ({onPress}) => {
         width: 70,
         alignItems: 'center',
         justifyContent: 'center',
+        paddingLeft: 5,
       }}>
       <Icon name="play" size={35} color={colorObj.primary} />
     </TouchableOpacity>
