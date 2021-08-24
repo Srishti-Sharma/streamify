@@ -25,5 +25,10 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: 10,
   },
+  linearGradient: {
+    position: 'absolute',
+    width: '100%',
+    height: '100%',
+  },
 });
 export default styles;

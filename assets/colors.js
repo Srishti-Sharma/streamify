@@ -8,5 +8,6 @@ export const colorObj = {
   black: 'rgb(50,50,50)',
   darkOpacity: 'rgba(26,22,28,0.2)',
   secondary: '#F9AA33',
-  primaryLight: '#2d6b91',
+  // primaryLight: '#305870',
+  primaryLight: '#254457',
 };
