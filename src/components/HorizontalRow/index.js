@@ -34,7 +34,7 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
                   style={styles.imageWrapper}
                   key={item.index}
                   onPress={() => {
-                    navigation.navigate('Details', {item: item});
+                    navigation.navigate('Details', {item: item.item});
                   }}>
                   {item.item.backdrop_path !== null && (
                     <FastImage

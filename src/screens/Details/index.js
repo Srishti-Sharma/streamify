@@ -27,7 +27,7 @@ const Details = ({route, navigation}) => {
       }}>
       <View style={{backgroundColor: colorObj.white, height: 400}}>
         <ImageBackground
-          source={{uri: `${baseImgUrl}${item.item.poster_path}`}}
+          source={{uri: `${baseImgUrl}${item.poster_path}`}}
           style={{width: '100%', height: '100%'}}
           resizeMode="cover">
           <LinearGradient
@@ -45,7 +45,6 @@ const Details = ({route, navigation}) => {
               curvedHeight={CURVED_HEIGHT}
               customStyles={styles.svgCurve}
               screenWidth={windowWidth}
-              item={item}
             />
           </LinearGradient>
         </ImageBackground>
@@ -56,8 +55,8 @@ const Details = ({route, navigation}) => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <CustomText style={styles.headerText}> {item.item.title}</CustomText>
-          <CustomText style={styles.bodyText}> {item.item.overview}</CustomText>
+          <CustomText style={styles.headerText}> {item.title}</CustomText>
+          <CustomText style={styles.bodyText}> {item.overview}</CustomText>
         </View>
       </View>
     </View>

@@ -5,6 +5,7 @@ import {
   SafeAreaView,
   ScrollView,
   ActivityIndicator,
+  TouchableOpacity,
 } from 'react-native';
 import AppTextCard from '../../components/AppTextCard';
 import styles from './styles';
@@ -88,22 +89,28 @@ const MovieList = ({
               movieList.map((item, index) => {
                 return (
                   <View style={styles.imageContainer} key={index}>
-                    <FastImage
-                      style={styles.image}
-                      source={{
-                        uri: `${baseImgUrl}${item.backdrop_path}`,
-                        priority: FastImage.priority.high,
-                      }}
-                      resizeMode={FastImage.resizeMode.cover}>
-                      <LinearGradient
-                        locations={[0, 1.0]}
-                        colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,0.99)']}
-                        style={styles.linearGradient}>
-                        <View style={styles.imageText}>
-                          <CustomText bold>{item.title}</CustomText>
-                        </View>
-                      </LinearGradient>
-                    </FastImage>
+                    <TouchableOpacity
+                      style={styles.clickableImageContainer}
+                      onPress={() => {
+                        navigation.navigate('Details', {item: item});
+                      }}>
+                      <FastImage
+                        style={styles.image}
+                        source={{
+                          uri: `${baseImgUrl}${item.backdrop_path}`,
+                          priority: FastImage.priority.high,
+                        }}
+                        resizeMode={FastImage.resizeMode.cover}>
+                        <LinearGradient
+                          locations={[0, 1.0]}
+                          colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,0.99)']}
+                          style={styles.linearGradient}>
+                          <View style={styles.imageText}>
+                            <CustomText bold>{item.title}</CustomText>
+                          </View>
+                        </LinearGradient>
+                      </FastImage>
+                    </TouchableOpacity>
                   </View>
                 );
               })}
