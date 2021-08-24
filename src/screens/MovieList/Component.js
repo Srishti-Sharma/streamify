@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import AppTextCard from '../../components/AppTextCard';
 import styles from './styles';
-import {genreList} from '../../app/constants';
+import {genre, genreList} from '../../app/constants';
 import CustomText from '../../components/CustomText';
 import requests from '../../../api/requests';
 import {colorObj} from '../../../assets/colors';
@@ -25,14 +25,28 @@ const MovieList = ({
 }) => {
   const [movieList, setMovieList] = useState([]);
   useEffect(() => {
-    fetchActionMoviesRequest(requests.fetchActionMovies);
+    switch (movieListGenre) {
+      case genre.ACTION:
+        fetchActionMoviesRequest(requests.fetchActionMovies);
+        break;
+
+      default:
+        break;
+    }
   }, []);
   useEffect(() => {
-    if (actionMovies) {
-      let arr = [...actionMovies];
-      setMovieList([...arr]);
+    switch (movieListGenre) {
+      case genre.ACTION:
+        if (actionMovies) {
+          let arr = [...actionMovies];
+          setMovieList([...arr]);
+        }
+        break;
+
+      default:
+        break;
     }
-  }, [actionMovies]);
+  }, [movieListGenre]);
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView directionalLockEnabled>
