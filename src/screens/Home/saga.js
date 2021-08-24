@@ -27,7 +27,7 @@ const fetchCall = ({payload}) => {
 };
 
 function* fetchActionMovieData(action) {
-  const url = requests.getActionMovieData;
+  const url = requests.getActionMovies;
   const response = yield call(fetchCall, {
     payload: url,
   });

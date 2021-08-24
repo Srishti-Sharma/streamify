@@ -36,10 +36,10 @@ const MovieList = ({
         fetchActionMoviesRequest();
         break;
       case genre.ROMANCE:
-        fetchRomanceMoviesRequest(requests.fetchRomanceMovies);
+        fetchRomanceMoviesRequest();
         break;
       case genre.HORROR:
-        fetchHorrorMoviesRequest(requests.fetchHorrorMovies);
+        fetchHorrorMoviesRequest();
         break;
       default:
         break;
