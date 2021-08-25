@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
   genreText: {
     marginTop: 10,
     color: colorObj.white,
+    textAlign: 'center',
   },
   buttonContainer: {
     paddingTop: 40,
