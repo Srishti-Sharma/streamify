@@ -8,7 +8,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Navigator from './Navigator';
 import {MovieList} from '../screens/MovieList';
 import {StackScreenOptions, screenOptions} from './utils';
-import Details from '../screens/Details';
+import {Details} from '../screens/Details';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
