@@ -4,6 +4,7 @@ import AppTextCard from '../../components/AppTextCard';
 import styles from './styles';
 import {genreList} from '../../app/constants';
 import CustomText from '../../components/CustomText';
+import CapsuleButton from '../../components/CapsuleButton';
 
 const Explore = ({navigation, setGenre}) => {
   return (
@@ -16,7 +17,14 @@ const Explore = ({navigation, setGenre}) => {
           {genreList.map((item, index) => {
             return (
               <View key={index} style={styles.cardContainer}>
-                <AppTextCard
+                {/* <AppTextCard
+                  title={item}
+                  onPress={() => {
+                    setGenre(item);
+                    navigation.navigate('MovieList');
+                  }}
+                /> */}
+                <CapsuleButton
                   title={item}
                   onPress={() => {
                     setGenre(item);
