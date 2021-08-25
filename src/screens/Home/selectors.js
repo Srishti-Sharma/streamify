@@ -33,3 +33,10 @@ export const selectTrendingMoviesError = state =>
   selectHome(state).trendingMoviesError;
 
 export const selectGenreList = state => selectHome(state).genreList;
+
+export const selectMovieListRequesting = state =>
+  selectHome(state).movieListRequesting;
+
+export const selectMovies = state => selectHome(state).movieList;
+
+export const selectMovieListError = state => selectHome(state).movieListError;

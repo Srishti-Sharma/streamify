@@ -23,6 +23,9 @@ const initialState = {
   genreList: [],
   genreListRequesting: false,
   genreListError: {},
+  movieList: [],
+  movieListRequesting: false,
+  movieListError: {},
 };
 
 // reducer
@@ -98,6 +101,20 @@ const reducer = handleActions(
       ...state,
       genreListRequesting: false,
       genreListError: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_REQUEST]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: true,
+    }),
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: false,
+      movieList: [...payload],
+    }),
+    [actionTypes.FETCH_HORROR_MOVIES_FAILURE]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: false,
+      movieListError: payload,
     }),
   },
   initialState,

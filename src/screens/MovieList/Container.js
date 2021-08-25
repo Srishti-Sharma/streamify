@@ -3,54 +3,30 @@ import Component from './Component';
 import {createSelector} from 'reselect';
 
 import {selectMovieListGenre} from './selectors';
+import {fetchMovieByGenreIdRequest} from '../Home/actions';
 import {
-  fetchActionMoviesRequest,
-  fetchRomanceMoviesRequest,
-  fetchHorrorMoviesRequest,
-} from '../Home/actions';
-import {
-  selectActionMoviesRequesting,
-  selectActionMovies,
-  selectRomanceMovies,
-  selectRomanceMoviesRequesting,
-  selectHorrorMovies,
-  selectHorrorMoviesRequesting,
+  selectMovieListRequesting,
+  selectMovies,
+  selectMovieListError,
 } from '../Home/selectors';
 
 const mapStateToProps = createSelector(
   selectMovieListGenre,
-  selectActionMoviesRequesting,
-  selectActionMovies,
-  selectRomanceMoviesRequesting,
-  selectRomanceMovies,
-  selectHorrorMoviesRequesting,
-  selectHorrorMovies,
-  (
+  selectMovieListRequesting,
+  selectMovies,
+  selectMovieListError,
+  (movieListGenre, movieListRequesting, movieListArr, MovieListError) => ({
     movieListGenre,
-    actionMoviesRequesting,
-    actionMovies,
-    romanceMoviesRequesting,
-    romanceMovies,
-    horrorMoviesRequesting,
-    horrorMovies,
-  ) => ({
     movieListGenre,
-    actionMoviesRequesting,
-    actionMovies,
-    romanceMoviesRequesting,
-    romanceMovies,
-    horrorMoviesRequesting,
-    horrorMovies,
+    movieListRequesting,
+    movieListArr,
+    MovieListError,
   }),
 );
 
 const mapDispatchToProps = dispatch => ({
-  fetchActionMoviesRequest: payload =>
-    dispatch(fetchActionMoviesRequest(payload)),
-  fetchRomanceMoviesRequest: payload =>
-    dispatch(fetchRomanceMoviesRequest(payload)),
-  fetchHorrorMoviesRequest: payload =>
-    dispatch(fetchHorrorMoviesRequest(payload)),
+  fetchMovieByGenreIdRequest: payload =>
+    dispatch(fetchMovieByGenreIdRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);

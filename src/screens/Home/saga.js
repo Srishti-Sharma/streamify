@@ -7,6 +7,7 @@ import {
   fetchHorrorMoviesRequest,
   fetchTrendingMoviesRequest,
   fetchGenreListRequest,
+  fetchMovieByGenreIdRequest,
 } from './actions';
 //axios
 import axios from '../../../api/axios';
@@ -16,6 +17,16 @@ import requests from '../../../api/requests';
 
 // axios call
 const fetchCall = ({payload}) => {
+  return axios
+    .get(payload)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return error;
+    });
+};
+const fetchGenericMovieByIdCall = ({payload}) => {
   return axios
     .get(payload)
     .then(response => {
@@ -143,12 +154,37 @@ function* fetchGenreData(action) {
   }
 }
 
+function* fetchMovieByGenreId(action) {
+  const url = requests.getGenericDiscoverList;
+  const response = yield call(fetchGenericMovieByIdCall, {
+    payload: url.replace(':id', action.payload),
+  });
+  if (response) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_BY_GENRE_ID_SUCCESS,
+      ),
+      payload: response.results,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_BY_GENRE_ID_FAILURE,
+      ),
+      payload: response,
+    });
+  }
+}
+
 function* testSaga() {
   yield takeLatest(fetchActionMoviesRequest, fetchActionMovieData);
   yield takeLatest(fetchRomanceMoviesRequest, fetchRomanceMovieData);
   yield takeLatest(fetchHorrorMoviesRequest, fetchHorrorMovieData);
   yield takeLatest(fetchTrendingMoviesRequest, fetchTrendingMovieData);
   yield takeLatest(fetchGenreListRequest, fetchGenreData);
+  yield takeLatest(fetchMovieByGenreIdRequest, fetchMovieByGenreId);
 }
 
 export default testSaga;

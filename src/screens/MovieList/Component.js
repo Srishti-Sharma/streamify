@@ -20,66 +20,24 @@ import LinearGradient from 'react-native-linear-gradient';
 const MovieList = ({
   navigation,
   movieListGenre,
-  fetchActionMoviesRequest,
-  actionMoviesRequesting,
-  actionMovies,
-  fetchRomanceMoviesRequest,
-  romanceMoviesRequesting,
-  romanceMovies,
-  horrorMoviesRequesting,
-  horrorMovies,
-  fetchHorrorMoviesRequest,
+  fetchMovieByGenreIdRequest,
+  movieListRequesting,
+  movieListArr,
 }) => {
   const [movieList, setMovieList] = useState([]);
   useEffect(() => {
-    switch (movieListGenre) {
-      case genre.ACTION:
-        fetchActionMoviesRequest();
-        break;
-      case genre.ROMANCE:
-        fetchRomanceMoviesRequest();
-        break;
-      case genre.HORROR:
-        fetchHorrorMoviesRequest();
-        break;
-      default:
-        break;
-    }
-    return () => setMovieList([]);
-  }, []);
-  useEffect(() => {
-    switch (movieListGenre) {
-      case genre.ACTION:
-        if (actionMovies) {
-          let arr = [...actionMovies];
-          setMovieList([...arr]);
-        }
-        break;
-      case genre.ROMANCE:
-        if (romanceMovies) {
-          let arr = [...romanceMovies];
-          setMovieList([...arr]);
-        }
-        break;
-      case genre.HORROR:
-        if (horrorMovies) {
-          let arr = [...horrorMovies];
-          setMovieList([...arr]);
-        }
-        break;
-
-      default:
-        break;
-    }
+    fetchMovieByGenreIdRequest(movieListGenre.id);
   }, [movieListGenre]);
-
-  const loading =
-    actionMoviesRequesting || romanceMoviesRequesting || horrorMoviesRequesting;
+  useEffect(() => {
+    if (movieListArr && movieListArr.length > 0) {
+      setMovieList([...movieListArr]);
+    }
+  }, [movieListArr]);
 
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView directionalLockEnabled>
-        {loading ? (
+        {movieListRequesting ? (
           <View style={styles.loader}>
             <ActivityIndicator size="small" color={colorObj.primaryText} />
           </View>

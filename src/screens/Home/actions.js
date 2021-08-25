@@ -29,6 +29,9 @@ export const {
   fetchGenreListRequest,
   fetchGenreListSuccess,
   fetchGenreListFailure,
+  fetchMovieByGenreIdRequest,
+  fetchMovieByGenreIdSuccess,
+  fetchMovieByGenreIdFailure,
 } = createActions(
   actionTypes.FETCH_ACTION_MOVIES_REQUEST,
   actionTypes.FETCH_ACTION_MOVIES_SUCCESS,
@@ -45,6 +48,8 @@ export const {
   actionTypes.FETCH_GENRE_LIST_REQUEST,
   actionTypes.FETCH_GENRE_LIST_SUCCESS,
   actionTypes.FETCH_GENRE_LIST_FAILURE,
-
+  actionTypes.FETCH_MOVIE_BY_GENRE_ID_REQUEST,
+  actionTypes.FETCH_MOVIE_BY_GENRE_ID_SUCCESS,
+  actionTypes.FETCH_MOVIE_BY_GENRE_ID_FAILURE,
   getActionOptions(ACTION_PREFIX),
 );
