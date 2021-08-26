@@ -5,7 +5,7 @@ import {colorObj} from '../../../assets/colors';
 
 import RoundButton from '../RoundButton';
 
-const WavyHeader = ({customStyles, curvedHeight, screenWidth}) => {
+const WavyHeader = ({customStyles, curvedHeight, screenWidth, onPress}) => {
   return (
     <View style={customStyles}>
       <Svg
@@ -36,7 +36,7 @@ const WavyHeader = ({customStyles, curvedHeight, screenWidth}) => {
             paddingLeft: screenWidth / 2 - 30,
             position: 'relative',
           }}>
-          <RoundButton onPress={() => {}} />
+          <RoundButton onPress={onPress} />
         </View>
       </Svg>
     </View>

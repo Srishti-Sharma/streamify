@@ -43,11 +43,20 @@ const styles = StyleSheet.create({
     paddingTop: 40,
     paddingLeft: 15,
   },
+  youTubeBackButton: {
+    paddingTop: 40,
+    paddingLeft: 15,
+  },
   imageStyle: {
     width: '100%',
     height: '100%',
   },
   innerContainer: {
+    marginTop: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  youTubeContainer: {
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
