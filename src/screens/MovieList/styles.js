@@ -7,13 +7,13 @@ const styles = StyleSheet.create({
     backgroundColor: colorObj.primary,
     justifyContent: 'center',
     alignItems: 'center',
-    paddingHorizontal: 5,
+    paddingHorizontal: 3,
   },
   image: {
     width: '100%',
-    height: 150,
+    height: 350,
     resizeMode: 'cover',
-    borderRadius: 5,
+    borderRadius: 34,
   },
   imageContainer: {
     padding: 10,
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     flexWrap: 'wrap',
+    marginTop: 100,
   },
   imageText: {
     position: 'absolute',
