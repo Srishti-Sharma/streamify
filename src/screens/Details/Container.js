@@ -1,10 +1,27 @@
 import {connect} from 'react-redux';
 import Component from './Component';
 import {createSelector} from 'reselect';
-import {selectGenreList} from '../Home/selectors';
+import {
+  selectGenreList,
+  selectMovieTrailerUrlRequesting,
+  selectMovieTrailerUrl,
+} from '../Home/selectors';
+import {fetchMovieTrailerUrlRequest} from '../Home/actions';
 
-const mapStateToProps = createSelector(selectGenreList, genreList => ({
-  genreList,
-}));
+const mapStateToProps = createSelector(
+  selectGenreList,
+  selectMovieTrailerUrlRequesting,
+  selectMovieTrailerUrl,
+  (genreList, movieTrailerUrlRequesting, movieTrailerUrl) => ({
+    genreList,
+    movieTrailerUrlRequesting,
+    movieTrailerUrl,
+  }),
+);
 
-export default connect(mapStateToProps, null)(Component);
+const mapDispatchToProps = dispatch => ({
+  fetchMovieTrailerUrlRequest: payload =>
+    dispatch(fetchMovieTrailerUrlRequest(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Component);

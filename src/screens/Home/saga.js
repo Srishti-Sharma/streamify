@@ -8,6 +8,7 @@ import {
   fetchTrendingMoviesRequest,
   fetchGenreListRequest,
   fetchMovieByGenreIdRequest,
+  fetchMovieTrailerUrlRequest,
 } from './actions';
 //axios
 import axios from '../../../api/axios';
@@ -27,6 +28,16 @@ const fetchCall = ({payload}) => {
     });
 };
 const fetchGenericMovieByIdCall = ({payload}) => {
+  return axios
+    .get(payload)
+    .then(response => {
+      return response.data;
+    })
+    .catch(error => {
+      return error;
+    });
+};
+const fetchMovieTrailer = ({payload}) => {
   return axios
     .get(payload)
     .then(response => {
@@ -178,6 +189,30 @@ function* fetchMovieByGenreId(action) {
   }
 }
 
+function* fetchMovieTrailerUrl(action) {
+  const url = requests.getVideoTrailer;
+  const response = yield call(fetchMovieTrailer, {
+    payload: url.replace(':movieId', action.payload),
+  });
+  if (response) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_TRAILER_URL_SUCCESS,
+      ),
+      payload: response.results[0]?.key,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_TRAILER_URL_FAILURE,
+      ),
+      payload: response,
+    });
+  }
+}
+
 function* testSaga() {
   yield takeLatest(fetchActionMoviesRequest, fetchActionMovieData);
   yield takeLatest(fetchRomanceMoviesRequest, fetchRomanceMovieData);
@@ -185,6 +220,7 @@ function* testSaga() {
   yield takeLatest(fetchTrendingMoviesRequest, fetchTrendingMovieData);
   yield takeLatest(fetchGenreListRequest, fetchGenreData);
   yield takeLatest(fetchMovieByGenreIdRequest, fetchMovieByGenreId);
+  yield takeLatest(fetchMovieTrailerUrlRequest, fetchMovieTrailerUrl);
 }
 
 export default testSaga;

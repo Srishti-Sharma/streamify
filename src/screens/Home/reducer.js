@@ -26,6 +26,9 @@ const initialState = {
   movieList: [],
   movieListRequesting: false,
   movieListError: {},
+  movieTrailerUrl: '',
+  movieTrailerUrlRequesting: false,
+  movieTrailerUrlError: {},
 };
 
 // reducer
@@ -111,10 +114,24 @@ const reducer = handleActions(
       movieListRequesting: false,
       movieList: [...payload],
     }),
-    [actionTypes.FETCH_HORROR_MOVIES_FAILURE]: (state, {payload}) => ({
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_FAILURE]: (state, {payload}) => ({
       ...state,
       movieListRequesting: false,
       movieListError: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_REQUEST]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: true,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: false,
+      movieTrailerUrl: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_FAILURE]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: false,
+      movieTrailerUrlError: payload,
     }),
   },
   initialState,

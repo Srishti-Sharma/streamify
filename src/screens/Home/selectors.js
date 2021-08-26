@@ -40,3 +40,11 @@ export const selectMovieListRequesting = state =>
 export const selectMovies = state => selectHome(state).movieList;
 
 export const selectMovieListError = state => selectHome(state).movieListError;
+
+export const selectMovieTrailerUrlRequesting = state =>
+  selectHome(state).movieTrailerUrlRequesting;
+
+export const selectMovieTrailerUrl = state => selectHome(state).movieTrailerUrl;
+
+export const selectMovieTrailerUrlError = state =>
+  selectHome(state).movieTrailerUrlError;

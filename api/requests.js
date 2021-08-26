@@ -11,6 +11,7 @@ const requests = {
   getRomanceMovies: `/discover/movie?api_key=${API_KEY}&with_genres=10749`,
   getDocumentaries: `/discover/movie?api_key=${API_KEY}&with_genres=99`,
   getGenreList: `/genre/movie/list?api_key=${API_KEY}&language=en-US`,
+  getVideoTrailer: `/movie/:movieId/videos?api_key=fb34530271b349314af0de263d16ab5a`,
 };
 
 export default requests;
