@@ -1,18 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {
-  View,
-  ImageBackground,
-  Dimensions,
-  ActivityIndicator,
-} from 'react-native';
+import {View, ImageBackground, ActivityIndicator} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import {baseImgUrl} from '../../../api/constants';
 import {colorObj} from '../../../assets/colors';
 import {BackButton} from '../../components';
 import CustomText from '../../components/CustomText';
+import RoundButton from '../../components/RoundButton';
 import WavyHeader from '../../components/WavyHeader';
 
 import styles from './styles';
+
+export const CURVED_HEIGHT = 400;
 
 const Details = ({
   route,
@@ -23,9 +21,6 @@ const Details = ({
   fetchMovieTrailerUrlRequest,
 }) => {
   const {item} = route.params;
-  const CURVED_HEIGHT = 400;
-
-  const windowWidth = Dimensions.get('window').width;
 
   useEffect(() => {
     if (item && item.id) {
@@ -64,8 +59,16 @@ const Details = ({
               <WavyHeader
                 curvedHeight={CURVED_HEIGHT}
                 customStyles={styles.svgCurve}
-                screenWidth={windowWidth}
               />
+              <View style={styles.roundButton}>
+                <RoundButton
+                  onPress={() => {
+                    navigation.navigate('PlayScreen', {
+                      url: movieTrailerUrl,
+                    });
+                  }}
+                />
+              </View>
             </LinearGradient>
           </ImageBackground>
 

@@ -9,6 +9,7 @@ import Navigator from './Navigator';
 import {MovieList} from '../screens/MovieList';
 import {StackScreenOptions, screenOptions} from './utils';
 import {Details} from '../screens/Details';
+import PlayScreen from '../screens/PlayScreen';
 
 const Stack = createNativeStackNavigator();
 const AppNavigator = () => {
@@ -30,6 +31,11 @@ const AppNavigator = () => {
         <Stack.Screen
           name="Details"
           component={Details}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen
+          name="PlayScreen"
+          component={PlayScreen}
           options={{headerShown: false}}
         />
       </Stack.Navigator>

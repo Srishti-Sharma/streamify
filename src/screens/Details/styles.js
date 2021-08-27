@@ -1,6 +1,8 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {colorObj} from '../../../assets/colors';
 
+const windowWidth = Dimensions.get('window').width;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -51,6 +53,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  roundButton: {
+    top: 130,
+    paddingLeft: windowWidth / 2 - 30,
   },
 });
 export default styles;

@@ -15,7 +15,6 @@ const ITEM_SIZE = width * 0.72;
 const SPACER_ITEM_SIZE = (width - ITEM_SIZE) / 2;
 
 const Backdrop = ({movies, scrollX}) => {
-  console.log('akk', movies);
   return (
     <View style={{height: BACKDROP_HEIGHT, width, position: 'absolute'}}>
       <FlatList
