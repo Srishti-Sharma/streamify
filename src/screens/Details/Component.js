@@ -44,14 +44,18 @@ const Details = ({
       {movieTrailerUrlRequesting ? (
         <ActivityIndicator size="small" color={colorObj.primaryText} />
       ) : (
-        <View style={{backgroundColor: colorObj.white, height: CURVED_HEIGHT}}>
+        <View
+          style={{
+            backgroundColor: colorObj.primary,
+            height: CURVED_HEIGHT,
+          }}>
           <ImageBackground
             source={{uri: `${baseImgUrl}${item.poster_path}`}}
             style={styles.imageStyle}
             resizeMode="cover">
             <LinearGradient
               locations={[1, 0]}
-              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.4)']}
+              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.7)']}
               style={styles.linearGradient}>
               <View style={styles.buttonContainer}>
                 <BackButton onPress={() => navigation.goBack()} />

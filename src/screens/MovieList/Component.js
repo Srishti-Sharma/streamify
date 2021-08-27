@@ -124,13 +124,8 @@ const MovieList = ({
                           uri: `${baseImgUrl}${item.poster_path}`,
                           priority: FastImage.priority.high,
                         }}
-                        resizeMode={FastImage.resizeMode.cover}>
-                        <LinearGradient
-                          locations={[0, 1.0]}
-                          colors={['rgba(0,0,0,0.00)', 'rgba(0,0,0,0.99)']}
-                          style={styles.linearGradient}
-                        />
-                      </FastImage>
+                        resizeMode={FastImage.resizeMode.cover}
+                      />
                       <CustomText
                         style={{
                           textAlign: 'center',

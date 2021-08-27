@@ -11,11 +11,7 @@ const WavyHeader = ({customStyles, curvedHeight}) => {
       <Svg height="100%" width="100%" viewBox="0 0 1440 320">
         <Defs>
           <LinearGradient id="path" x1="0" y1="0" x2="0" y2="100%">
-            <Stop
-              offset="0"
-              stopColor={colorObj.primaryLight}
-              stopOpacity="0.8"
-            />
+            <Stop offset="0" stopColor={colorObj.primary} stopOpacity="1" />
             <Stop offset="1" stopColor={colorObj.primary} stopOpacity="1" />
           </LinearGradient>
         </Defs>
