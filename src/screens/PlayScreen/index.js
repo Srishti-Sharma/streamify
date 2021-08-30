@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text} from 'react-native';
 import YouTube from 'react-native-youtube';
+import {AUTH_KEY} from '../../../api/constants';
 import {BackButton} from '../../components';
 
 import styles from './styles';
@@ -18,7 +19,7 @@ const PlayScreen = ({route, navigation}) => {
         <BackButton onPress={() => navigation.goBack()} />
       </View>
       <YouTube
-        //   apiKey=
+        apiKey={AUTH_KEY}
         videoId={url} // The YouTube video ID
         play // control playback of video with true/false
         fullscreen // control whether the video should play in fullscreen or inline
@@ -27,7 +28,10 @@ const PlayScreen = ({route, navigation}) => {
         onChangeState={e => setStatus(e.state)}
         onChangeQuality={e => setQuality(e.quality)}
         onError={e => setError(e.error)}
-        style={{alignSelf: 'stretch', height: 300}}
+        style={{
+          alignSelf: 'stretch',
+          height: 300,
+        }}
       />
     </View>
   );
