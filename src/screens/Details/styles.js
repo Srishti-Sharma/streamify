@@ -1,12 +1,15 @@
 import {Dimensions, StyleSheet} from 'react-native';
 import {colorObj} from '../../../assets/colors';
+import {vs} from '../../helpers/styleHelpers';
 
 const windowWidth = Dimensions.get('window').width;
+const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colorObj.primary,
+    paddingTop: 0,
   },
   image: {
     flex: 0.5,
@@ -42,21 +45,38 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    paddingTop: 40,
     paddingLeft: 15,
+    backgroundColor: colorObj.primary,
   },
   imageStyle: {
     width: '100%',
     height: '100%',
   },
   innerContainer: {
-    marginTop: 20,
+    // marginTop: 20,
     justifyContent: 'center',
     alignItems: 'center',
   },
   roundButton: {
     top: 130,
     paddingLeft: windowWidth / 2 - 30,
+  },
+  ratingContainer: {
+    display: 'flex',
+    width: '50%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginVertical: 10,
+  },
+  ratingText: {
+    color: '#f1c40f',
+    fontWeight: '600',
+    fontSize: 16,
+    marginTop: 5,
+  },
+  contentContainer: {
+    paddingBottom: 30,
   },
 });
 export default styles;

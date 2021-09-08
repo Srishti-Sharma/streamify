@@ -1,5 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {View, ImageBackground, ActivityIndicator} from 'react-native';
+import React, {useEffect} from 'react';
+import {
+  View,
+  ActivityIndicator,
+  ScrollView,
+  Dimensions,
+  SafeAreaView,
+} from 'react-native';
+
+import FastImage from 'react-native-fast-image';
+
 import LinearGradient from 'react-native-linear-gradient';
 import {baseImgUrl} from '../../../api/constants';
 import {colorObj} from '../../../assets/colors';
@@ -8,9 +17,11 @@ import CustomText from '../../components/CustomText';
 import RoundButton from '../../components/RoundButton';
 import WavyHeader from '../../components/WavyHeader';
 
-import styles from './styles';
+import {vs, ms} from '../../helpers/styleHelpers';
 
-export const CURVED_HEIGHT = 400;
+import {Rating} from 'react-native-ratings';
+
+import styles from './styles';
 
 const Details = ({
   route,
@@ -21,6 +32,10 @@ const Details = ({
   fetchMovieTrailerUrlRequest,
 }) => {
   const {item} = route.params;
+  const height = Dimensions.get('screen').height;
+  console.log('height ', height);
+
+  const CURVED_HEIGHT = height / 2;
 
   useEffect(() => {
     if (item && item.id) {
@@ -40,26 +55,29 @@ const Details = ({
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       {movieTrailerUrlRequesting ? (
         <ActivityIndicator size="small" color={colorObj.primaryText} />
       ) : (
-        <View
-          style={{
-            backgroundColor: colorObj.primary,
-            height: CURVED_HEIGHT,
-          }}>
-          <ImageBackground
-            source={{uri: `${baseImgUrl}${item.poster_path}`}}
-            style={styles.imageStyle}
-            resizeMode="cover">
-            <LinearGradient
-              locations={[1, 0]}
-              colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.7)']}
-              style={styles.linearGradient}>
-              <View style={styles.buttonContainer}>
-                <BackButton onPress={() => navigation.goBack()} />
-              </View>
+        <ScrollView
+          contentContainerStyle={styles.contentContainer}
+          stickyHeaderIndices={[0]}>
+          <View style={styles.buttonContainer}>
+            <BackButton onPress={() => navigation.goBack()} />
+          </View>
+          <View
+            style={{
+              backgroundColor: colorObj.primary,
+              height: CURVED_HEIGHT - 60,
+            }}>
+            <FastImage
+              source={{uri: `${baseImgUrl}${item.poster_path}`}}
+              style={styles.imageStyle}
+              resizeMode="cover">
+              {/* <LinearGradient
+                locations={[1, 0]}
+                colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.7)']}
+                style={styles.linearGradient}> */}
               <WavyHeader
                 curvedHeight={CURVED_HEIGHT}
                 customStyles={styles.svgCurve}
@@ -73,9 +91,9 @@ const Details = ({
                   }}
                 />
               </View>
-            </LinearGradient>
-          </ImageBackground>
-
+              {/* </LinearGradient> */}
+            </FastImage>
+          </View>
           <View style={styles.innerContainer}>
             <CustomText style={styles.headerText}> {item.title}</CustomText>
             <CustomText style={styles.genreText}>
@@ -83,11 +101,26 @@ const Details = ({
                 ? getGenres(item.genre_ids, genreList).join('  ')
                 : 'Genre'}
             </CustomText>
-            <CustomText style={styles.bodyText}> {item.overview}</CustomText>
+            <CustomText style={styles.bodyText}>{item.overview}</CustomText>
+            <View style={styles.ratingContainer}>
+              <Rating
+                imageSize={30}
+                size={30}
+                readonly
+                startingValue={item.vote_average / 2}
+                fractions={1}
+                tintColor={colorObj.primary}
+                style={styles.rating}
+                count={10}
+              />
+              <CustomText style={styles.ratingText}>
+                {item.vote_count}
+              </CustomText>
+            </View>
           </View>
-        </View>
+        </ScrollView>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
