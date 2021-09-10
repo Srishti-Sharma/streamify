@@ -12,6 +12,7 @@ import styles from './styles';
 import {baseImgUrl} from '../../../api/constants';
 import {colorObj} from '../../../assets/colors';
 import FastImage from 'react-native-fast-image';
+import ProgressiveImage from '../ProgressiveImage';
 
 const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
   let renderDataList;
@@ -25,7 +26,7 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
             navigation.navigate('Details', {item: item.item});
           }}>
           {item.item.backdrop_path !== null && (
-            <FastImage
+            <ProgressiveImage
               style={styles.image}
               source={{
                 uri: `${baseImgUrl}${item.item.backdrop_path}`,

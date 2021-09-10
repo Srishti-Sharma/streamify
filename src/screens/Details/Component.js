@@ -56,7 +56,9 @@ const Details = ({
   return (
     <SafeAreaView style={styles.container}>
       {movieTrailerUrlRequesting ? (
-        <ActivityIndicator size="small" color={colorObj.primaryText} />
+        <View style={styles}>
+          <ActivityIndicator size="small" color={colorObj.primaryText} />
+        </View>
       ) : (
         <ScrollView
           contentContainerStyle={styles.contentContainer}

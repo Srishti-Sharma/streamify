@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     paddingLeft: 15,
+    paddingBottom: 10,
     backgroundColor: colorObj.primary,
   },
   imageStyle: {
@@ -77,6 +78,10 @@ const styles = StyleSheet.create({
   },
   contentContainer: {
     paddingBottom: 30,
+  },
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
 export default styles;

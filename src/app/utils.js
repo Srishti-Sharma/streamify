@@ -17,6 +17,7 @@ export const tabScreenOptions = route => ({
     shadowOpacity: 0,
     borderBottomWidth: 0,
   },
+  headerShown: false,
   tabBarOptions: {
     showLabel: false,
   },

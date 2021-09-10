@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 
 // Redux Store
 import configure from '../store';
+import {colorObj} from '../../assets/colors';
 
 // Configure Store
 const {store} = configure();
@@ -17,7 +18,10 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
+        <StatusBar
+          barStyle={'light-content'}
+          backgroundColor={colorObj.primary}
+        />
         <AppNavigator />
       </Provider>
     </>
