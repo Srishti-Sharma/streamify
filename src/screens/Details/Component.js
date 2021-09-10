@@ -54,7 +54,7 @@ const Details = ({
   };
 
   return (
-    <SafeAreaView style={styles.container}>
+    <>
       {movieTrailerUrlRequesting ? (
         <View style={styles}>
           <ActivityIndicator size="small" color={colorObj.primaryText} />
@@ -62,10 +62,7 @@ const Details = ({
       ) : (
         <ScrollView
           contentContainerStyle={styles.contentContainer}
-          stickyHeaderIndices={[0]}>
-          <View style={styles.buttonContainer}>
-            <BackButton onPress={() => navigation.goBack()} />
-          </View>
+          style={styles.container}>
           <View
             style={{
               backgroundColor: colorObj.primary,
@@ -75,10 +72,14 @@ const Details = ({
               source={{uri: `${baseImgUrl}${item.poster_path}`}}
               style={styles.imageStyle}
               resizeMode="cover">
-              {/* <LinearGradient
+              <LinearGradient
                 locations={[1, 0]}
                 colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.7)']}
-                style={styles.linearGradient}> */}
+                style={styles.linearGradient}
+              />
+              <View style={styles.buttonContainer}>
+                <BackButton onPress={() => navigation.goBack()} />
+              </View>
               <WavyHeader
                 curvedHeight={CURVED_HEIGHT}
                 customStyles={styles.svgCurve}
@@ -92,7 +93,6 @@ const Details = ({
                   }}
                 />
               </View>
-              {/* </LinearGradient> */}
             </FastImage>
           </View>
           <View style={styles.innerContainer}>
@@ -121,7 +121,7 @@ const Details = ({
           </View>
         </ScrollView>
       )}
-    </SafeAreaView>
+    </>
   );
 };
 

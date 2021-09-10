@@ -1,4 +1,4 @@
-import {Dimensions, StyleSheet} from 'react-native';
+import {Dimensions, Platform, StyleSheet} from 'react-native';
 import {colorObj} from '../../../assets/colors';
 import {vs} from '../../helpers/styleHelpers';
 
@@ -45,9 +45,15 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   buttonContainer: {
-    paddingLeft: 15,
-    paddingBottom: 10,
-    backgroundColor: colorObj.primary,
+    backgroundColor: colorObj.primaryTransparent,
+    width: 50,
+    height: 50,
+    position: 'absolute',
+    top: Platform.OS === 'ios' ? 40 : 20,
+    left: 15,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 50,
   },
   imageStyle: {
     width: '100%',

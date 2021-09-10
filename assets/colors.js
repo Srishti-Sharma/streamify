@@ -12,4 +12,5 @@ export const colorObj = {
   primaryLight: '#305870',
   primaryLighter: '#374f5e',
   primaryFade: '#53ADE650',
+  primaryTransparent: '#10222D90',
 };
