@@ -1,10 +1,11 @@
 import {StyleSheet} from 'react-native';
 import {colorObj} from '../../../assets/colors';
+import {tabStyles} from '../../app/constants';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginBottom: 70,
+    marginBottom: tabStyles.tabHeight,
     backgroundColor: colorObj.primary,
     justifyContent: 'center',
     alignItems: 'center',

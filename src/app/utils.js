@@ -3,6 +3,7 @@ import {colorObj} from '../../assets/colors';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {Text, TouchableOpacity} from 'react-native';
 import {BackButton} from '../components';
+import {tabStyles} from './constants';
 
 export const tabScreenOptions = route => ({
   tabBarActiveTintColor: colorObj.secondary,
@@ -22,7 +23,7 @@ export const tabScreenOptions = route => ({
   headerTintColor: colorObj.secondary,
   tabBarShowLabel: false, // removes bottom-tab text
   tabBarStyle: {
-    height: 80,
+    height: tabStyles.tabHeight,
     backgroundColor: colorObj.primary,
     position: 'absolute',
     bottom: 0,

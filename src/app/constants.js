@@ -1,3 +1,5 @@
+import {Platform} from 'react-native';
+
 export const genreList = [
   'Action',
   'Romance',
@@ -14,4 +16,8 @@ export const genre = {
   HORROR: 'Horror',
   DOCUMENTARIES: 'Documentaries',
   TOP_RATED: 'Top Rated',
+};
+
+export const tabStyles = {
+  tabHeight: Platform.OS === 'ios' ? 70 : 50,
 };
