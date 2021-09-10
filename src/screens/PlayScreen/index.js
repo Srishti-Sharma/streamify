@@ -18,21 +18,23 @@ const PlayScreen = ({route, navigation}) => {
       <View style={styles.buttonContainer}>
         <BackButton onPress={() => navigation.goBack()} />
       </View>
-      <YouTube
-        apiKey={AUTH_KEY}
-        videoId={url} // The YouTube video ID
-        play // control playback of video with true/false
-        fullscreen // control whether the video should play in fullscreen or inline
-        loop // control whether the video should loop when ended
-        onReady={e => setIsReady(true)}
-        onChangeState={e => setStatus(e.state)}
-        onChangeQuality={e => setQuality(e.quality)}
-        onError={e => setError(e.error)}
-        style={{
-          alignSelf: 'stretch',
-          height: 300,
-        }}
-      />
+      <View style={{flex: 1, justifyContent: 'center', marginBottom: 70}}>
+        <YouTube
+          apiKey={AUTH_KEY}
+          videoId={url} // The YouTube video ID
+          play // control playback of video with true/false
+          fullscreen // control whether the video should play in fullscreen or inline
+          loop // control whether the video should loop when ended
+          onReady={e => setIsReady(true)}
+          onChangeState={e => setStatus(e.state)}
+          onChangeQuality={e => setQuality(e.quality)}
+          onError={e => setError(e.error)}
+          style={{
+            alignSelf: 'stretch',
+            height: 300,
+          }}
+        />
+      </View>
     </View>
   );
 };
