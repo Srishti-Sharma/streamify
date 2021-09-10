@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useCallback} from 'react';
 import {
   Text,
   View,
@@ -14,6 +14,31 @@ import {colorObj} from '../../../assets/colors';
 import FastImage from 'react-native-fast-image';
 
 const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
+  let renderDataList;
+  if (contentList && contentList.length > 0) {
+    renderDataList = useCallback(
+      item => (
+        <TouchableOpacity
+          style={styles.imageWrapper}
+          key={item.index}
+          onPress={() => {
+            navigation.navigate('Details', {item: item.item});
+          }}>
+          {item.item.backdrop_path !== null && (
+            <FastImage
+              style={styles.image}
+              source={{
+                uri: `${baseImgUrl}${item.item.backdrop_path}`,
+                priority: FastImage.priority.high,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+            />
+          )}
+        </TouchableOpacity>
+      ),
+      [contentList],
+    );
+  }
   return (
     <View style={styles.rowContainer}>
       <CustomText bold>{title}</CustomText>
@@ -26,28 +51,12 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
           contentList &&
           contentList.length > 0 && (
             <FlatList
+              removeClippedSubviews
+              initialNumToRender={4}
               data={contentList}
               horizontal
               keyExtractor={(item, index) => index}
-              renderItem={item => (
-                <TouchableOpacity
-                  style={styles.imageWrapper}
-                  key={item.index}
-                  onPress={() => {
-                    navigation.navigate('Details', {item: item.item});
-                  }}>
-                  {item.item.backdrop_path !== null && (
-                    <FastImage
-                      style={styles.image}
-                      source={{
-                        uri: `${baseImgUrl}${item.item.backdrop_path}`,
-                        priority: FastImage.priority.high,
-                      }}
-                      resizeMode={FastImage.resizeMode.cover}
-                    />
-                  )}
-                </TouchableOpacity>
-              )}
+              renderItem={renderDataList}
             />
           )
         )}
@@ -56,4 +65,4 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
   );
 };
 
-export default HorizontalRow;
+export default React.memo(HorizontalRow);
