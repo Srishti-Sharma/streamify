@@ -33,7 +33,6 @@ const Details = ({
 }) => {
   const {item} = route.params;
   const height = Dimensions.get('screen').height;
-  console.log('height ', height);
 
   const CURVED_HEIGHT = height / 2;
 

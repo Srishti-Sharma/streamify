@@ -43,5 +43,10 @@ const styles = StyleSheet.create({
   clickableImageContainer: {
     width: '100%',
   },
+  loader: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 });
 export default styles;

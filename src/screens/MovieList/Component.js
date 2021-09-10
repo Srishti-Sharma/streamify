@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useCallback} from 'react';
 const {width, height} = Dimensions.get('window');
 import {
   View,
@@ -53,6 +53,81 @@ const MovieList = ({
     }
   }, [movieListArr]);
 
+  let renderList;
+  renderList = useCallback(
+    ({item, index}) => {
+      if (!item.poster_path) {
+        return (
+          <View
+            style={{
+              width: SPACER_ITEM_SIZE,
+              backgroundColor: 'red',
+            }}
+          />
+        );
+      }
+      const inputRange = [
+        (index - 2) * ITEM_SIZE,
+        (index - 1) * ITEM_SIZE,
+        index * ITEM_SIZE,
+      ];
+      const translateY = scrollX.interpolate({
+        inputRange,
+        outputRange: [100, 50, 100],
+        extrapolate: 'clamp',
+      });
+      return (
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('Details', {item: item});
+          }}>
+          <View style={{width: ITEM_SIZE}}>
+            <Animated.View
+              style={{
+                marginHorizontal: SPACING,
+                padding: SPACING / 2,
+                alignItems: 'center',
+                borderRadius: 34,
+                transform: [{translateY}],
+                padding: 10,
+                backgroundColor: colorObj.primary,
+              }}>
+              <FastImage
+                style={styles.image}
+                source={{
+                  uri: `${baseImgUrl}${item.poster_path}`,
+                  priority: FastImage.priority.high,
+                }}
+                resizeMode={FastImage.resizeMode.cover}
+              />
+              <CustomText
+                style={{
+                  textAlign: 'center',
+                  color: colorObj.primaryText,
+                  fontSize: 20,
+                  fontWeight: 'bold',
+                  paddingTop: 10,
+                }}
+                numberOfLines={1}>
+                {item.title}
+              </CustomText>
+              <CustomText
+                numberOfLines={3}
+                style={{
+                  textAlign: 'center',
+                  color: colorObj.primaryText,
+                  paddingTop: 10,
+                }}>
+                {item.overview}
+              </CustomText>
+            </Animated.View>
+          </View>
+        </TouchableOpacity>
+      );
+    },
+    [movieListArr],
+  );
+
   return (
     <SafeAreaView style={styles.container}>
       {movieListRequesting ? (
@@ -64,6 +139,7 @@ const MovieList = ({
           <Backdrop movies={movieList} scrollX={scrollX} />
           <Animated.FlatList
             showsHorizontalScrollIndicator={false}
+            removeClippedSubviews
             data={movieList}
             keyExtractor={item => item.id}
             horizontal
@@ -81,76 +157,7 @@ const MovieList = ({
               {useNativeDriver: true},
             )}
             scrollEventThrottle={16}
-            renderItem={({item, index}) => {
-              if (!item.poster_path) {
-                return (
-                  <View
-                    style={{
-                      width: SPACER_ITEM_SIZE,
-                      backgroundColor: 'red',
-                    }}
-                  />
-                );
-              }
-              const inputRange = [
-                (index - 2) * ITEM_SIZE,
-                (index - 1) * ITEM_SIZE,
-                index * ITEM_SIZE,
-              ];
-              const translateY = scrollX.interpolate({
-                inputRange,
-                outputRange: [100, 50, 100],
-                extrapolate: 'clamp',
-              });
-              return (
-                <TouchableOpacity
-                  onPress={() => {
-                    navigation.navigate('Details', {item: item});
-                  }}>
-                  <View style={{width: ITEM_SIZE}}>
-                    <Animated.View
-                      style={{
-                        marginHorizontal: SPACING,
-                        padding: SPACING / 2,
-                        alignItems: 'center',
-                        borderRadius: 34,
-                        transform: [{translateY}],
-                        padding: 10,
-                        backgroundColor: colorObj.primary,
-                      }}>
-                      <FastImage
-                        style={styles.image}
-                        source={{
-                          uri: `${baseImgUrl}${item.poster_path}`,
-                          priority: FastImage.priority.high,
-                        }}
-                        resizeMode={FastImage.resizeMode.cover}
-                      />
-                      <CustomText
-                        style={{
-                          textAlign: 'center',
-                          color: colorObj.primaryText,
-                          fontSize: 20,
-                          fontWeight: 'bold',
-                          paddingTop: 10,
-                        }}
-                        numberOfLines={1}>
-                        {item.title}
-                      </CustomText>
-                      <CustomText
-                        numberOfLines={3}
-                        style={{
-                          textAlign: 'center',
-                          color: colorObj.primaryText,
-                          paddingTop: 10,
-                        }}>
-                        {item.overview}
-                      </CustomText>
-                    </Animated.View>
-                  </View>
-                </TouchableOpacity>
-              );
-            }}
+            renderItem={renderList}
           />
         </View>
       )}
