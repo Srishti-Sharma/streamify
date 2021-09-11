@@ -12,7 +12,8 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   linearGradient: props => ({
-    padding: 15,
+    paddingHorizontal: 15,
+    paddingVertical: 25,
     // borderRadius: 50,
     width: props.width,
     alignItems: 'center',

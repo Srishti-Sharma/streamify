@@ -14,29 +14,20 @@ const Explore = ({navigation, setGenre, genreList}) => {
         </View>
         <View style={styles.genreContainer}>
           {genreList &&
-            genreList
-              // .filter(item => item.id % 2 === 0)
-              .map((item, index) => {
-                return (
-                  <View key={index} style={styles.cardContainer}>
-                    {/* <AppTextCard
-                      title={item.name}
-                      onPress={() => {
-                        setGenre(item);
-                        navigation.navigate('MovieList');
-                      }}
-                    /> */}
-                    <CapsuleButton
-                      title={item?.name}
-                      onPress={() => {
-                        setGenre(item);
-                        navigation.navigate('MovieList');
-                      }}
-                      width={width / 2 - 20}
-                    />
-                  </View>
-                );
-              })}
+            genreList.map((item, index) => {
+              return (
+                <View key={index} style={styles.cardContainer}>
+                  <CapsuleButton
+                    title={item?.name}
+                    onPress={() => {
+                      setGenre(item);
+                      navigation.navigate('MovieList');
+                    }}
+                    width={width / 2 - 20}
+                  />
+                </View>
+              );
+            })}
         </View>
       </ScrollView>
     </SafeAreaView>

@@ -42,7 +42,9 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
   }
   return (
     <View style={styles.rowContainer}>
-      <CustomText bold>{title}</CustomText>
+      <CustomText bold customtyle={{paddingHorizontal: 5}}>
+        {title}
+      </CustomText>
       <View style={styles.ListContainer}>
         {loading ? (
           <View style={styles.loader}>
@@ -58,6 +60,7 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
               horizontal
               keyExtractor={(item, index) => index}
               renderItem={renderDataList}
+              contentContainerStyle={{paddingHorizontal: 5}}
             />
           )
         )}
