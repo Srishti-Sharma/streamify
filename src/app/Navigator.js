@@ -16,6 +16,7 @@ import {Home} from '../screens/Home';
 import {Explore} from '../screens/Explore';
 import {Test} from '../screens/testScreen';
 import {tabScreenOptions} from './utils';
+import {Profile} from '../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@ const Navigator = () => {
     <Tab.Navigator screenOptions={({route}) => tabScreenOptions(route)}>
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Explore" component={Explore} />
-      <Tab.Screen name="Profile" component={Test} />
+      <Tab.Screen name="Profile" component={Profile} />
     </Tab.Navigator>
   );
 };
