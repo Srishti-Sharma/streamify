@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
   },
   linearGradient: props => ({
     padding: 15,
-    borderRadius: 50,
+    // borderRadius: 50,
     width: props.width,
     alignItems: 'center',
     justifyContent: 'center',

@@ -106,7 +106,6 @@ const Circle = ({onPress, animatedValue, index, pressedCount}) => {
             ],
           },
         ]}>
-        {console.log('akk', pressedCount)}
         <TouchableOpacity onPress={onPress}>
           <Animated.View style={[styles.circleButton]}>
             <AnimatedIcon
