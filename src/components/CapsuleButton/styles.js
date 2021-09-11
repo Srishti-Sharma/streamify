@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
   linearGradient: props => ({
     paddingHorizontal: 15,
     paddingVertical: 25,
-    // borderRadius: 50,
+    borderRadius: 50,
     width: props.width,
     alignItems: 'center',
     justifyContent: 'center',
@@ -22,6 +22,7 @@ const styles = StyleSheet.create({
   text: {
     color: colorObj.primaryText,
     fontWeight: 'bold',
+    fontSize: 16,
   },
 });
 export default styles;
