@@ -1,4 +1,4 @@
-import React, {useState, useCallback} from 'react';
+import React, {useState, useCallback, useRef} from 'react';
 import {
   Text,
   View,
@@ -6,6 +6,7 @@ import {
   FlatList,
   ActivityIndicator,
   TouchableOpacity,
+  Animated,
 } from 'react-native';
 import CustomText from '../CustomText';
 import styles from './styles';
@@ -14,32 +15,61 @@ import {colorObj} from '../../../assets/colors';
 import FastImage from 'react-native-fast-image';
 import ProgressiveImage from '../ProgressiveImage';
 
+const ITEM_SIZE = 100;
+
 const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
+  const scrollX = useRef(new Animated.Value(0)).current;
   let renderDataList;
   if (contentList && contentList.length > 0) {
     renderDataList = useCallback(
-      item => (
-        <TouchableOpacity
-          style={styles.imageWrapper}
-          key={item.index}
-          onPress={() => {
-            navigation.navigate('Details', {item: item.item});
-          }}>
-          {item.item.backdrop_path !== null && (
-            <ProgressiveImage
-              style={styles.image}
-              source={{
-                uri: `${baseImgUrl}${item.item.backdrop_path}`,
-                priority: FastImage.priority.high,
-              }}
-              resizeMode={FastImage.resizeMode.cover}
-            />
-          )}
-        </TouchableOpacity>
-      ),
+      item => {
+        const inputRange = [
+          -1,
+          0,
+          ITEM_SIZE * item.index,
+          ITEM_SIZE * (item.index + 5),
+        ];
+        const inputRangeforOpacity = [
+          -1,
+          0,
+          ITEM_SIZE * item.index,
+          ITEM_SIZE * (item.index + 2),
+        ];
+        const scale = scrollX.interpolate({
+          inputRange,
+          outputRange: [1, 1, 1, 0],
+        });
+        const opacity = scrollX.interpolate({
+          inputRange: inputRangeforOpacity,
+          outputRange: [1, 1, 1, 0.5],
+        });
+
+        return (
+          <TouchableOpacity
+            style={styles.imageWrapper}
+            key={item.index}
+            onPress={() => {
+              navigation.navigate('Details', {item: item.item});
+            }}>
+            {item.item.backdrop_path !== null && (
+              <Animated.View style={{transform: [{scale}], opacity}}>
+                <ProgressiveImage
+                  style={styles.image}
+                  source={{
+                    uri: `${baseImgUrl}${item.item.backdrop_path}`,
+                    priority: FastImage.priority.high,
+                  }}
+                  resizeMode={FastImage.resizeMode.cover}
+                />
+              </Animated.View>
+            )}
+          </TouchableOpacity>
+        );
+      },
       [contentList],
     );
   }
+
   return (
     <View style={styles.rowContainer}>
       <CustomText bold customtyle={{paddingHorizontal: 5}}>
@@ -53,7 +83,7 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
         ) : (
           contentList &&
           contentList.length > 0 && (
-            <FlatList
+            <Animated.FlatList
               removeClippedSubviews
               initialNumToRender={4}
               data={contentList}
@@ -61,6 +91,10 @@ const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
               keyExtractor={(item, index) => index}
               renderItem={renderDataList}
               contentContainerStyle={{paddingHorizontal: 5}}
+              onScroll={Animated.event(
+                [{nativeEvent: {contentOffset: {x: scrollX}}}],
+                {useNativeDriver: false},
+              )}
             />
           )
         )}
