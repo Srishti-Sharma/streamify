@@ -1,19 +1,12 @@
-import React, {useEffect} from 'react';
-import {
-  View,
-  Text,
-  ScrollView,
-  FlatList,
-  TouchableOpacity,
-  Image,
-  ImageBackground,
-  SafeAreaView,
-  StatusBar,
-} from 'react-native';
+import React, {useEffect, useState, useCallback} from 'react';
+import {View, ScrollView, SafeAreaView, RefreshControl} from 'react-native';
 import styles from './styles';
 import HorizontalRow from '../../components/HorizontalRow';
 import CarouselCards from '../../components/CarouselCards';
-
+import {colorObj} from '../../../assets/colors';
+const wait = timeout => {
+  return new Promise(resolve => setTimeout(resolve, timeout));
+};
 const HomeScreen = ({
   fetchActionMoviesRequest,
   actionMovies,
@@ -29,16 +22,39 @@ const HomeScreen = ({
   trendingMovies,
   navigation,
 }) => {
-  useEffect(() => {
+  const [refreshing, setRefreshing] = useState(false);
+
+  const fetchData = () => {
     fetchActionMoviesRequest();
     fetchRomanceMoviesRequest();
     fetchHorrorMoviesRequest();
     fetchTrendingMoviesRequest();
     fetchGenreListRequest();
+  };
+
+  useEffect(() => {
+    fetchData();
   }, []);
+
+  const onRefresh = useCallback(() => {
+    setRefreshing(true);
+    fetchData();
+    wait(1000).then(() => setRefreshing(false));
+  }, []);
+
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView directionalLockEnabled>
+      <ScrollView
+        directionalLockEnabled
+        refreshControl={
+          <RefreshControl
+            refreshing={refreshing}
+            onRefresh={onRefresh}
+            progressBackgroundColor={colorObj.secondary}
+            tintColor={colorObj.secondary}
+            colors={[colorObj.primary]}
+          />
+        }>
         <View
           style={{
             height: 300,
