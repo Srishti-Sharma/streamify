@@ -19,56 +19,51 @@ const ITEM_SIZE = 100;
 
 const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
   const scrollX = useRef(new Animated.Value(0)).current;
-  let renderDataList;
-  if (contentList && contentList.length > 0) {
-    renderDataList = useCallback(
-      item => {
-        const inputRange = [
-          -1,
-          0,
-          ITEM_SIZE * item.index,
-          ITEM_SIZE * (item.index + 5),
-        ];
-        const inputRangeforOpacity = [
-          -1,
-          0,
-          ITEM_SIZE * item.index,
-          ITEM_SIZE * (item.index + 2),
-        ];
-        const scale = scrollX.interpolate({
-          inputRange,
-          outputRange: [1, 1, 1, 0],
-        });
-        const opacity = scrollX.interpolate({
-          inputRange: inputRangeforOpacity,
-          outputRange: [1, 1, 1, 0.5],
-        });
 
-        return (
-          <TouchableOpacity
-            style={styles.imageWrapper}
-            key={item.index}
-            onPress={() => {
-              navigation.navigate('Details', {item: item.item});
-            }}>
-            {item.item.backdrop_path !== null && (
-              <Animated.View style={{transform: [{scale}], opacity}}>
-                <ProgressiveImage
-                  style={styles.image}
-                  source={{
-                    uri: `${baseImgUrl}${item.item.backdrop_path}`,
-                    priority: FastImage.priority.high,
-                  }}
-                  resizeMode={FastImage.resizeMode.cover}
-                />
-              </Animated.View>
-            )}
-          </TouchableOpacity>
-        );
-      },
-      [contentList],
+  const renderDataList = item => {
+    const inputRange = [
+      -1,
+      0,
+      ITEM_SIZE * item.index,
+      ITEM_SIZE * (item.index + 5),
+    ];
+    const inputRangeforOpacity = [
+      -1,
+      0,
+      ITEM_SIZE * item.index,
+      ITEM_SIZE * (item.index + 2),
+    ];
+    const scale = scrollX.interpolate({
+      inputRange,
+      outputRange: [1, 1, 1, 0],
+    });
+    const opacity = scrollX.interpolate({
+      inputRange: inputRangeforOpacity,
+      outputRange: [1, 1, 1, 0.5],
+    });
+
+    return (
+      <TouchableOpacity
+        style={styles.imageWrapper}
+        key={item.index}
+        onPress={() => {
+          navigation.navigate('Details', {item: item.item});
+        }}>
+        {item.item.backdrop_path !== null && (
+          <Animated.View style={{transform: [{scale}], opacity}}>
+            <ProgressiveImage
+              style={styles.image}
+              source={{
+                uri: `${baseImgUrl}${item.item.backdrop_path}`,
+                priority: FastImage.priority.high,
+              }}
+              resizeMode={FastImage.resizeMode.cover}
+            />
+          </Animated.View>
+        )}
+      </TouchableOpacity>
     );
-  }
+  };
 
   return (
     <View style={styles.rowContainer}>
