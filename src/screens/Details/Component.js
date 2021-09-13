@@ -66,14 +66,14 @@ const Details = ({
           <View
             style={{
               backgroundColor: colorObj.primary,
-              height: CURVED_HEIGHT - 60,
+              height: CURVED_HEIGHT - 65,
             }}>
             <FastImage
               source={{uri: `${baseImgUrl}${item.poster_path}`}}
               style={styles.imageStyle}
               resizeMode="cover">
               <LinearGradient
-                locations={[0.3, 0]}
+                locations={[1, 0]}
                 colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.5)']}
                 style={styles.linearGradient}
               />
