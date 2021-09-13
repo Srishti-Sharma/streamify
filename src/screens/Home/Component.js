@@ -69,18 +69,21 @@ const HomeScreen = ({
           contentList={actionMovies}
           loading={actionMoviesRequesting}
           navigation={navigation}
+          isRefreshing={refreshing}
         />
         <HorizontalRow
           title="Romance Movies"
           contentList={romanceMovies}
           loading={romanceMoviesRequesting}
           navigation={navigation}
+          isRefreshing={refreshing}
         />
         <HorizontalRow
           title="Horror Movies"
           contentList={horrorMovies}
           loading={horrorMoviesRequesting}
           navigation={navigation}
+          isRefreshing={refreshing}
         />
       </ScrollView>
     </SafeAreaView>

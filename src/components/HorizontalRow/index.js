@@ -1,9 +1,6 @@
-import React, {useState, useCallback, useRef} from 'react';
+import React, {useRef, useEffect} from 'react';
 import {
-  Text,
   View,
-  Image,
-  FlatList,
   ActivityIndicator,
   TouchableOpacity,
   Animated,
@@ -17,8 +14,24 @@ import ProgressiveImage from '../ProgressiveImage';
 
 const ITEM_SIZE = 100;
 
-const HorizontalRow = ({title = '', contentList = [], loading, navigation}) => {
-  const scrollX = useRef(new Animated.Value(0)).current;
+const HorizontalRow = ({
+  title = '',
+  contentList = [],
+  loading,
+  navigation,
+  isRefreshing,
+}) => {
+  let scrollX = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    if (isRefreshing) {
+      Animated.timing(scrollX, {
+        toValue: 0,
+        duration: 0,
+        useNativeDriver: true,
+      }).start();
+    }
+  }, [isRefreshing]);
 
   const renderDataList = item => {
     const inputRange = [
