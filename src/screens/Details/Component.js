@@ -56,7 +56,7 @@ const Details = ({
   return (
     <>
       {movieTrailerUrlRequesting ? (
-        <View style={styles}>
+        <View style={styles.loaderContainer}>
           <ActivityIndicator size="small" color={colorObj.primaryText} />
         </View>
       ) : (
@@ -73,13 +73,14 @@ const Details = ({
               style={styles.imageStyle}
               resizeMode="cover">
               <LinearGradient
-                locations={[1, 0]}
-                colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.7)']}
+                locations={[0.3, 0]}
+                colors={['rgba(0,0,0,0.0)', 'rgba(0,0,0,0.5)']}
                 style={styles.linearGradient}
               />
-              <View style={styles.buttonContainer}>
-                <BackButton onPress={() => navigation.goBack()} />
-              </View>
+              <BackButton
+                onPress={() => navigation.goBack()}
+                showBackground={true}
+              />
               <WavyHeader
                 curvedHeight={CURVED_HEIGHT}
                 customStyles={styles.svgCurve}

@@ -6,6 +6,13 @@ const windowWidth = Dimensions.get('window').width;
 const windowHeight = Dimensions.get('window').height;
 
 const styles = StyleSheet.create({
+  loaderContainer: {
+    flex: 1,
+    backgroundColor: colorObj.primary,
+    paddingTop: 0,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   container: {
     flex: 1,
     backgroundColor: colorObj.primary,
