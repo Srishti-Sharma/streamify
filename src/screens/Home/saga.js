@@ -1,4 +1,4 @@
-import {takeLatest, fork, select, call, put} from 'redux-saga/effects';
+import {takeLatest, call, put} from 'redux-saga/effects';
 //actions
 
 import {
@@ -6,65 +6,60 @@ import {
   fetchRomanceMoviesRequest,
   fetchHorrorMoviesRequest,
   fetchTrendingMoviesRequest,
+  fetchGenreListRequest,
+  fetchMovieByGenreIdRequest,
+  fetchMovieTrailerUrlRequest,
 } from './actions';
 //axios
 import axios from '../../../api/axios';
 import {actionTypes, ACTION_PREFIX} from './constants';
 import {createActionString} from '../../utils/reduxactions';
-//selectors
+import requests from '../../../api/requests';
 
-const getActionMovies = ({payload}) => {
+// axios call
+const fetchCall = ({payload}) => {
   return axios
     .get(payload)
-    .then(function (response) {
-      return response;
+    .then(response => {
+      return response.data;
     })
-    .catch(function (error) {
+    .catch(error => {
       return error;
     });
 };
-const getRomanceMovies = ({payload}) => {
+const fetchGenericMovieByIdCall = ({payload}) => {
   return axios
     .get(payload)
-    .then(function (response) {
-      return response;
+    .then(response => {
+      return response.data;
     })
-    .catch(function (error) {
+    .catch(error => {
       return error;
     });
 };
-const getHorrorMovies = ({payload}) => {
+const fetchMovieTrailer = ({payload}) => {
   return axios
     .get(payload)
-    .then(function (response) {
-      return response;
+    .then(response => {
+      return response.data;
     })
-    .catch(function (error) {
-      return error;
-    });
-};
-const getTrendingMovies = ({payload}) => {
-  return axios
-    .get(payload)
-    .then(function (response) {
-      return response;
-    })
-    .catch(function (error) {
+    .catch(error => {
       return error;
     });
 };
 
 function* fetchActionMovieData(action) {
-  const response = yield call(getActionMovies, {
-    payload: action.payload,
+  const url = requests.getActionMovies;
+  const response = yield call(fetchCall, {
+    payload: url,
   });
-  if (response && response.data && response.data.results) {
+  if (response && response.results) {
     yield put({
       type: createActionString(
         ACTION_PREFIX,
         actionTypes.FETCH_ACTION_MOVIES_SUCCESS,
       ),
-      payload: response.data.results,
+      payload: response.results,
     });
   } else {
     yield put({
@@ -77,16 +72,17 @@ function* fetchActionMovieData(action) {
   }
 }
 function* fetchRomanceMovieData(action) {
-  const response = yield call(getRomanceMovies, {
-    payload: action.payload,
+  const url = requests.getRomanceMovies;
+  const response = yield call(fetchCall, {
+    payload: url,
   });
-  if (response && response.data && response.data.results) {
+  if (response && response.results) {
     yield put({
       type: createActionString(
         ACTION_PREFIX,
         actionTypes.FETCH_ROMANCE_MOVIES_SUCCESS,
       ),
-      payload: response.data.results,
+      payload: response.results,
     });
   } else {
     yield put({
@@ -99,16 +95,17 @@ function* fetchRomanceMovieData(action) {
   }
 }
 function* fetchHorrorMovieData(action) {
-  const response = yield call(getHorrorMovies, {
-    payload: action.payload,
+  const url = requests.getHorrorMovies;
+  const response = yield call(fetchCall, {
+    payload: url,
   });
-  if (response && response.data && response.data.results) {
+  if (response && response.results) {
     yield put({
       type: createActionString(
         ACTION_PREFIX,
         actionTypes.FETCH_HORROR_MOVIES_SUCCESS,
       ),
-      payload: response.data.results,
+      payload: response.results,
     });
   } else {
     yield put({
@@ -121,16 +118,17 @@ function* fetchHorrorMovieData(action) {
   }
 }
 function* fetchTrendingMovieData(action) {
-  const response = yield call(getTrendingMovies, {
-    payload: action.payload,
+  const url = requests.getTrending;
+  const response = yield call(fetchCall, {
+    payload: url,
   });
-  if (response && response.data && response.data.results) {
+  if (response && response.results) {
     yield put({
       type: createActionString(
         ACTION_PREFIX,
         actionTypes.FETCH_TRENDING_MOVIES_SUCCESS,
       ),
-      payload: response.data.results,
+      payload: response.results,
     });
   } else {
     yield put({
@@ -143,11 +141,86 @@ function* fetchTrendingMovieData(action) {
   }
 }
 
+function* fetchGenreData(action) {
+  const url = requests.getGenreList;
+  const response = yield call(fetchCall, {
+    payload: url,
+  });
+  if (response && response.genres) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_GENRE_LIST_SUCCESS,
+      ),
+      payload: response.genres,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_GENRE_LIST_FAILURE,
+      ),
+      payload: response,
+    });
+  }
+}
+
+function* fetchMovieByGenreId(action) {
+  const url = requests.getGenericDiscoverList;
+  const response = yield call(fetchGenericMovieByIdCall, {
+    payload: url.replace(':id', action.payload),
+  });
+  if (response) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_BY_GENRE_ID_SUCCESS,
+      ),
+      payload: response.results,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_BY_GENRE_ID_FAILURE,
+      ),
+      payload: response,
+    });
+  }
+}
+
+function* fetchMovieTrailerUrl(action) {
+  const url = requests.getVideoTrailer;
+  const response = yield call(fetchMovieTrailer, {
+    payload: url.replace(':movieId', action.payload),
+  });
+  if (response) {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_TRAILER_URL_SUCCESS,
+      ),
+      payload: response.results[0]?.key,
+    });
+  } else {
+    yield put({
+      type: createActionString(
+        ACTION_PREFIX,
+        actionTypes.FETCH_MOVIE_TRAILER_URL_FAILURE,
+      ),
+      payload: response,
+    });
+  }
+}
+
 function* testSaga() {
   yield takeLatest(fetchActionMoviesRequest, fetchActionMovieData);
   yield takeLatest(fetchRomanceMoviesRequest, fetchRomanceMovieData);
   yield takeLatest(fetchHorrorMoviesRequest, fetchHorrorMovieData);
   yield takeLatest(fetchTrendingMoviesRequest, fetchTrendingMovieData);
+  yield takeLatest(fetchGenreListRequest, fetchGenreData);
+  yield takeLatest(fetchMovieByGenreIdRequest, fetchMovieByGenreId);
+  yield takeLatest(fetchMovieTrailerUrlRequest, fetchMovieTrailerUrl);
 }
 
 export default testSaga;

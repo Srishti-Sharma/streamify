@@ -13,9 +13,10 @@ const Test = ({test, testAction}) => (
       onPress={() => {
         testAction(5);
       }}
-      title="Click"
+      title="Streamify (click me)"
     />
-    <Text style={{color: '#fff', marginTop: 15}}>{test}</Text>
+    <Text style={{color: '#fff', marginVertical: 15}}>{test}</Text>
+    <AppButton title="Watch Now" />
   </View>
 );
 

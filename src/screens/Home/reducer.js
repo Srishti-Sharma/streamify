@@ -20,6 +20,15 @@ const initialState = {
   trendingMovies: [],
   trendingMoviesRequesting: false,
   trendingMoviesError: {},
+  genreList: [],
+  genreListRequesting: false,
+  genreListError: {},
+  movieList: [],
+  movieListRequesting: false,
+  movieListError: {},
+  movieTrailerUrl: '',
+  movieTrailerUrlRequesting: false,
+  movieTrailerUrlError: {},
 };
 
 // reducer
@@ -81,6 +90,48 @@ const reducer = handleActions(
       ...state,
       trendingMoviesRequesting: false,
       trendingMoviesError: payload,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_REQUEST]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: true,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: false,
+      genreList: payload,
+    }),
+    [actionTypes.FETCH_GENRE_LIST_FAILURE]: (state, {payload}) => ({
+      ...state,
+      genreListRequesting: false,
+      genreListError: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_REQUEST]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: true,
+    }),
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: false,
+      movieList: [...payload],
+    }),
+    [actionTypes.FETCH_MOVIE_BY_GENRE_ID_FAILURE]: (state, {payload}) => ({
+      ...state,
+      movieListRequesting: false,
+      movieListError: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_REQUEST]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: true,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_SUCCESS]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: false,
+      movieTrailerUrl: payload,
+    }),
+    [actionTypes.FETCH_MOVIE_TRAILER_URL_FAILURE]: (state, {payload}) => ({
+      ...state,
+      movieTrailerUrlRequesting: false,
+      movieTrailerUrlError: payload,
     }),
   },
   initialState,

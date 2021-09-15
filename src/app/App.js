@@ -1,11 +1,13 @@
 import React from 'react';
 import {StatusBar, useColorScheme} from 'react-native';
-import Navigator from './Navigator';
+// import Navigator from './Navigator';
+import AppNavigator from './AppNavigator';
 // Redux
 import {Provider} from 'react-redux';
 
 // Redux Store
 import configure from '../store';
+import {colorObj} from '../../assets/colors';
 
 // Configure Store
 const {store} = configure();
@@ -16,8 +18,11 @@ const App = () => {
   return (
     <>
       <Provider store={store}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Navigator />
+        <StatusBar
+          barStyle={'light-content'}
+          backgroundColor={colorObj.primary}
+        />
+        <AppNavigator />
       </Provider>
     </>
   );

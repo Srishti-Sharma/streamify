@@ -6,6 +6,7 @@ import {
   fetchRomanceMoviesRequest,
   fetchHorrorMoviesRequest,
   fetchTrendingMoviesRequest,
+  fetchGenreListRequest,
 } from './actions';
 import {
   selectActionMovies,
@@ -57,6 +58,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch(fetchHorrorMoviesRequest(payload)),
   fetchTrendingMoviesRequest: payload =>
     dispatch(fetchTrendingMoviesRequest(payload)),
+  fetchGenreListRequest: payload => dispatch(fetchGenreListRequest(payload)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Component);
